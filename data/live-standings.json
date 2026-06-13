@@ -132,14 +132,14 @@
             "tla": "QAT",
             "crest": "https://crests.football-data.org/8030.svg"
           },
-          "playedGames": 0,
-          "form": "",
+          "playedGames": 1,
+          "form": "D",
           "won": 0,
-          "draw": 0,
+          "draw": 1,
           "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
           "goalDifference": 0
         },
         {
@@ -151,14 +151,14 @@
             "tla": "SUI",
             "crest": "https://crests.football-data.org/788.svg"
           },
-          "playedGames": 0,
-          "form": "",
+          "playedGames": 1,
+          "form": "D",
           "won": 0,
-          "draw": 0,
+          "draw": 1,
           "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
           "goalDifference": 0
         },
         {
@@ -1026,6 +1026,25 @@
         {
           "position": 5,
           "team": {
+            "id": 8030,
+            "name": "Qatar",
+            "shortName": "Qatar",
+            "tla": "QAT",
+            "crest": "https://crests.football-data.org/8030.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "position": 6,
+          "team": {
             "id": 774,
             "name": "South Africa",
             "shortName": "South Africa",
@@ -1043,7 +1062,7 @@
           "goalDifference": 0
         },
         {
-          "position": 6,
+          "position": 7,
           "team": {
             "id": 798,
             "name": "Czechia",
@@ -1062,7 +1081,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -1081,32 +1100,13 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 9,
           "team": {
             "id": 761,
             "name": "Paraguay",
             "shortName": "Paraguay",
             "tla": "PAR",
             "crest": "https://crests.football-data.org/761.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 9,
-          "team": {
-            "id": 8030,
-            "name": "Qatar",
-            "shortName": "Qatar",
-            "tla": "QAT",
-            "crest": "https://crests.football-data.org/8030.svg"
           },
           "playedGames": 0,
           "form": "",
@@ -1888,6 +1888,25 @@
         {
           "position": 2,
           "team": {
+            "id": 788,
+            "name": "Switzerland",
+            "shortName": "Switzerland",
+            "tla": "SUI",
+            "crest": "https://crests.football-data.org/788.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "position": 3,
+          "team": {
             "id": 769,
             "name": "Mexico",
             "shortName": "Mexico",
@@ -1905,7 +1924,7 @@
           "goalDifference": 0
         },
         {
-          "position": 3,
+          "position": 4,
           "team": {
             "id": 772,
             "name": "South Korea",
@@ -1924,7 +1943,7 @@
           "goalDifference": 0
         },
         {
-          "position": 4,
+          "position": 5,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -1943,7 +1962,7 @@
           "goalDifference": 0
         },
         {
-          "position": 5,
+          "position": 6,
           "team": {
             "id": 771,
             "name": "United States",
@@ -1962,32 +1981,13 @@
           "goalDifference": 0
         },
         {
-          "position": 6,
+          "position": 7,
           "team": {
             "id": 8030,
             "name": "Qatar",
             "shortName": "Qatar",
             "tla": "QAT",
             "crest": "https://crests.football-data.org/8030.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 7,
-          "team": {
-            "id": 788,
-            "name": "Switzerland",
-            "shortName": "Switzerland",
-            "tla": "SUI",
-            "crest": "https://crests.football-data.org/788.svg"
           },
           "playedGames": 0,
           "form": "",
