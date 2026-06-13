@@ -10,6 +10,9 @@ const COMPETITION = process.env.FOOTBALL_DATA_COMPETITION || 'WC';
 const SEASON = process.env.FOOTBALL_DATA_SEASON || '2026';
 const BASE_URL = 'https://api.football-data.org/v4';
 const OUT_DIR = path.join(process.cwd(), 'data');
+const SKIP_BEFORE_FIRST_MATCH = /^(1|true|yes)$/i.test(process.env.SKIP_BEFORE_FIRST_MATCH || '');
+const MATCH_UPDATE_OFFSET_HOURS = Number.parseInt(process.env.MATCH_UPDATE_OFFSET_HOURS || '0', 10);
+const MATCH_UPDATE_WINDOW_MINUTES = Number.parseInt(process.env.MATCH_UPDATE_WINDOW_MINUTES || '15', 10);
 
 if (!TOKEN) {
   console.error('Missing FOOTBALL_DATA_TOKEN. Add it in GitHub repo Settings → Secrets and variables → Actions.');
@@ -37,17 +40,56 @@ function normalizeGroupFromMatch(match) {
   return match.group || match.stage || '';
 }
 
+function getFirstMatchUtcDate(matches) {
+  return matches
+    .map(match => match?.utcDate)
+    .filter(Boolean)
+    .sort((a, b) => Date.parse(a) - Date.parse(b))[0] || null;
+}
+
+function getScheduledUpdateMatch(matches, nowMs) {
+  if (!Number.isFinite(MATCH_UPDATE_OFFSET_HOURS) || MATCH_UPDATE_OFFSET_HOURS <= 0) return null;
+  if (!Number.isFinite(MATCH_UPDATE_WINDOW_MINUTES) || MATCH_UPDATE_WINDOW_MINUTES <= 0) return null;
+
+  const offsetMs = MATCH_UPDATE_OFFSET_HOURS * 60 * 60 * 1000;
+  const windowMs = MATCH_UPDATE_WINDOW_MINUTES * 60 * 1000;
+
+  return matches.find(match => {
+    const kickoffMs = Date.parse(match?.utcDate || '');
+    if (!Number.isFinite(kickoffMs)) return false;
+    const targetMs = kickoffMs + offsetMs;
+    return nowMs >= targetMs && nowMs < targetMs + windowMs;
+  }) || null;
+}
+
 async function main() {
   console.log(`Fetching ${COMPETITION} season ${SEASON} from football-data.org...`);
 
-  const [matchesRes, standingsRes, teamsRes] = await Promise.allSettled([
-    api(`/competitions/${COMPETITION}/matches?season=${SEASON}`),
+  const matchesPayload = await api(`/competitions/${COMPETITION}/matches?season=${SEASON}`);
+  const matches = matchesPayload.matches || [];
+  const firstMatchUtcDate = getFirstMatchUtcDate(matches);
+  const nowMs = Date.now();
+
+  if (SKIP_BEFORE_FIRST_MATCH && firstMatchUtcDate && nowMs < Date.parse(firstMatchUtcDate)) {
+    console.log(`Skipping update because the first match has not started yet. First kickoff: ${firstMatchUtcDate}`);
+    return;
+  }
+
+  const scheduledUpdateMatch = getScheduledUpdateMatch(matches, nowMs);
+  if (MATCH_UPDATE_OFFSET_HOURS > 0 && !scheduledUpdateMatch) {
+    console.log(`Skipping update because no match is currently in the ${MATCH_UPDATE_OFFSET_HOURS}-hour refresh window.`);
+    return;
+  }
+  if (scheduledUpdateMatch) {
+    console.log(`Refreshing data for match ${scheduledUpdateMatch.id} at ${MATCH_UPDATE_OFFSET_HOURS} hours after kickoff (${scheduledUpdateMatch.utcDate}).`);
+  }
+
+  const [standingsRes, teamsRes] = await Promise.allSettled([
     api(`/competitions/${COMPETITION}/standings?season=${SEASON}`),
     api(`/competitions/${COMPETITION}/teams?season=${SEASON}`)
   ]);
 
   const errors = [];
-  const matches = matchesRes.status === 'fulfilled' ? matchesRes.value.matches || [] : (errors.push(`matches: ${matchesRes.reason.message}`), []);
   const standings = standingsRes.status === 'fulfilled' ? standingsRes.value : (errors.push(`standings: ${standingsRes.reason.message}`), null);
   const teams = teamsRes.status === 'fulfilled' ? teamsRes.value.teams || [] : (errors.push(`teams: ${teamsRes.reason.message}`), []);
 
@@ -70,6 +112,7 @@ async function main() {
     source: 'football-data.org',
     competition: COMPETITION,
     season: SEASON,
+    firstMatchUtcDate,
     updatedAt: new Date().toISOString(),
     counts: { matches: simplifiedMatches.length, teams: teams.length, standingsTables: standings?.standings?.length || 0 },
     warnings: errors

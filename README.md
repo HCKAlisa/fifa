@@ -145,12 +145,14 @@ If you skip football-data setup, the site still works for manual/generated roste
 
 The workflow at `.github/workflows/update-worldcup-data.yml`:
 
-- runs daily at `09:00 UTC`
-- can also be started manually
-- installs `poppler-utils`
-- updates rosters from the FIFA PDF
+- checks every 15 minutes on GitHub Actions schedule
+- refreshes `data/live-*.json` only when a match is about 3 hours past kickoff
+- skips scheduled live refreshes before the first match of the configured competition/season
+- can also be started manually for a full refresh
+- installs `poppler-utils` only for the manual roster refresh
+- updates rosters from the FIFA PDF during manual runs
 - updates fixtures and standings from football-data.org
-- commits refreshed `data/*.json`
+- commits refreshed JSON back to the repo
 
 ### Required GitHub secret
 

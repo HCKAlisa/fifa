@@ -12,8 +12,11 @@ on:
           - "true"
           - "false"
   schedule:
-    # Daily update. You can delete this schedule and run manually only if you prefer.
-    - cron: "0 9 * * *"
+    - cron: "*/15 * * * *"
+
+concurrency:
+  group: update-worldcup-data
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -31,21 +34,43 @@ jobs:
           node-version: 20
 
       - name: Install PDF text tool
+        if: github.event_name == 'workflow_dispatch'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
       - name: Fetch official FIFA squad PDF and enrich rosters
+        if: github.event_name == 'workflow_dispatch'
         env:
           ENABLE_PROFILE_ENRICHMENT: ${{ github.event.inputs.enrich_profiles || 'true' }}
         run: node scripts/update-official-rosters.js
 
       - name: Fetch football-data.org fixtures and standings
+        if: github.event_name == 'workflow_dispatch'
         env:
           FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
           FOOTBALL_DATA_COMPETITION: ${{ vars.FOOTBALL_DATA_COMPETITION || 'WC' }}
           FOOTBALL_DATA_SEASON: ${{ vars.FOOTBALL_DATA_SEASON || '2026' }}
         run: node scripts/update-football-data.js
 
-      - name: Commit updated JSON
+      - name: Refresh football-data.org API files on schedule
+        if: github.event_name == 'schedule'
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          FOOTBALL_DATA_COMPETITION: ${{ vars.FOOTBALL_DATA_COMPETITION || 'WC' }}
+          FOOTBALL_DATA_SEASON: ${{ vars.FOOTBALL_DATA_SEASON || '2026' }}
+          SKIP_BEFORE_FIRST_MATCH: "true"
+          MATCH_UPDATE_OFFSET_HOURS: "3"
+          MATCH_UPDATE_WINDOW_MINUTES: "15"
+        run: node scripts/update-football-data.js
+
+      - name: Commit live API JSON
+        if: github.event_name == 'schedule'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update World Cup live API data"
+          file_pattern: data/live-*.json
+
+      - name: Commit full data refresh
+        if: github.event_name == 'workflow_dispatch'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update World Cup roster, fixture and standing data"
