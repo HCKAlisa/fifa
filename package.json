@@ -1,0 +1,19 @@
+{
+  "name": "wc2026-roster-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static FIFA World Cup 2026 roster tracker with GitHub Actions data updates.",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "preview": "node scripts/serve.js",
+    "update:football-data": "node scripts/update-football-data.js",
+    "update:rosters": "node scripts/update-official-rosters.js",
+    "update:team-metadata": "node scripts/update-team-metadata.js",
+    "update:sportsroad-zh": "node scripts/import-sportsroad-zh.js",
+    "repair:player-links": "node scripts/repair-player-links.js",
+    "normalize:wiki-search-links": "node scripts/normalize-wiki-search-links.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

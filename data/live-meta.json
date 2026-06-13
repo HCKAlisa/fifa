@@ -1,0 +1,12 @@
+{
+  "source": "football-data.org",
+  "competition": "WC",
+  "season": "2026",
+  "updatedAt": "2026-06-13T04:45:33.586Z",
+  "counts": {
+    "matches": 104,
+    "teams": 48,
+    "standingsTables": 3
+  },
+  "warnings": []
+}

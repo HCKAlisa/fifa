@@ -1,0 +1,52 @@
+name: Update World Cup Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      enrich_profiles:
+        description: "Enrich official roster players with Wikipedia/Wikidata profile links, photos, and zh labels"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+  schedule:
+    # Daily update. You can delete this schedule and run manually only if you prefer.
+    - cron: "0 9 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install PDF text tool
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Fetch official FIFA squad PDF and enrich rosters
+        env:
+          ENABLE_PROFILE_ENRICHMENT: ${{ github.event.inputs.enrich_profiles || 'true' }}
+        run: node scripts/update-official-rosters.js
+
+      - name: Fetch football-data.org fixtures and standings
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          FOOTBALL_DATA_COMPETITION: ${{ vars.FOOTBALL_DATA_COMPETITION || 'WC' }}
+          FOOTBALL_DATA_SEASON: ${{ vars.FOOTBALL_DATA_SEASON || '2026' }}
+        run: node scripts/update-football-data.js
+
+      - name: Commit updated JSON
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update World Cup roster, fixture and standing data"
+          file_pattern: data/*.json
