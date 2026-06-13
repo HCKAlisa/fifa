@@ -32,6 +32,17 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream' });
   fs.createReadStream(file).pipe(res);
 });
+
+server.on('error', err => {
+  if(err?.code === 'EADDRINUSE'){
+    console.error(`Port ${PORT} is already in use.`);
+    console.error(`If you already started the preview, open http://localhost:${PORT}`);
+    console.error(`Otherwise stop the other process or run with a different port, for example: PORT=${PORT + 1} npm start`);
+    process.exit(1);
+  }
+  throw err;
+});
+
 server.listen(PORT, () => {
   console.log(`Local preview: http://localhost:${PORT}`);
   console.log('Press Ctrl+C to stop.');

@@ -14,9 +14,28 @@ loadEnvFile();
 const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const TMP_DIR = path.join(ROOT, '.tmp');
+const OFFICIAL_ROSTERS_PATH = path.join(DATA_DIR, 'official-rosters.json');
 const PDF_URL = process.env.FIFA_SQUAD_PDF_URL || 'https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf';
 const ENABLE_ENRICHMENT = String(process.env.ENABLE_PROFILE_ENRICHMENT || 'true').toLowerCase() !== 'false';
+const ALLOW_ROSTER_DATA_DROP = /^(1|true|yes)$/i.test(process.env.ALLOW_ROSTER_DATA_DROP || '');
 const clubLabelCache = new Map();
+const PRESERVE_PLAYER_FIELDS = [
+  'name_zh',
+  'club_zh',
+  'photo_url',
+  'profile_url',
+  'confidence',
+  'number',
+  'notes',
+  'dob',
+  'club_en',
+  'position',
+  'wikidata_id',
+  'club_wikidata_id',
+  'club_zh_confidence',
+  'enrichment_error',
+  'club_enrichment_error'
+];
 
 function resolvePdfToTextBin(){
   const candidates = [
@@ -119,6 +138,174 @@ function clubNameFrom(club){
 }
 function clubSearchName(club){
   return clubNameFrom(club).replace(/\s+\([A-Z]{3}\)\s*$/, '').trim();
+}
+
+function hasMeaningfulValue(value){
+  if(value == null) return false;
+  if(typeof value === 'string') return value.trim() !== '';
+  if(Array.isArray(value)) return value.length > 0;
+  if(typeof value === 'object') return Object.keys(value).length > 0;
+  return true;
+}
+
+function readExistingRosters(){
+  if(!fs.existsSync(OFFICIAL_ROSTERS_PATH)) return null;
+  try{
+    return JSON.parse(fs.readFileSync(OFFICIAL_ROSTERS_PATH, 'utf8'));
+  }catch(err){
+    console.warn(`Warning: could not parse existing official-rosters.json: ${err.message}`);
+    return null;
+  }
+}
+
+function buildExistingPlayerMaps(team){
+  const byName = new Map();
+  const byNumber = new Map();
+  for(const player of team?.players || []){
+    const nameKey = normalizeName(player?.name_en || '');
+    const numberKey = String(player?.number || '').trim();
+    if(nameKey){
+      if(!byName.has(nameKey)) byName.set(nameKey, []);
+      byName.get(nameKey).push(player);
+    }
+    if(numberKey && !byNumber.has(numberKey)) byNumber.set(numberKey, player);
+  }
+  return { byName, byNumber };
+}
+
+function findExistingPlayer(player, existingMaps, usedPlayers){
+  const nameKey = normalizeName(player?.name_en || '');
+  const numberKey = String(player?.number || '').trim();
+
+  if(nameKey){
+    const named = (existingMaps.byName.get(nameKey) || []).find(candidate => !usedPlayers.has(candidate));
+    if(named) return named;
+  }
+
+  if(numberKey){
+    const numbered = existingMaps.byNumber.get(numberKey);
+    if(numbered && !usedPlayers.has(numbered)) return numbered;
+  }
+
+  return null;
+}
+
+function mergeRosterNotes(nextNote='', existingNote=''){
+  const next = String(nextNote || '').trim();
+  const existing = String(existingNote || '').trim();
+  if(!next) return existing;
+  if(!existing) return next;
+  if(existing === next || existing.includes(next)) return existing;
+  if(next.includes(existing)) return next;
+  return `${next} ${existing}`.trim();
+}
+
+function mergeExistingPlayer(nextPlayer, existingPlayer){
+  if(!existingPlayer) return nextPlayer;
+
+  const merged = { ...existingPlayer, ...nextPlayer };
+
+  for(const key of PRESERVE_PLAYER_FIELDS){
+    if(hasMeaningfulValue(existingPlayer[key])) merged[key] = existingPlayer[key];
+  }
+
+  return merged;
+}
+
+function mergeExistingTeams(nextTeams, existingRosters){
+  const existingTeamsByCode = new Map((existingRosters?.teams || []).map(team => [team.code, team]));
+
+  return nextTeams.map(team => {
+    const existingTeam = existingTeamsByCode.get(team.code);
+    if(!existingTeam) return team;
+
+    const existingMaps = buildExistingPlayerMaps(existingTeam);
+    const usedPlayers = new Set();
+    const players = (team.players || []).map(player => {
+      const existingPlayer = findExistingPlayer(player, existingMaps, usedPlayers);
+      if(existingPlayer) usedPlayers.add(existingPlayer);
+      return mergeExistingPlayer(player, existingPlayer);
+    });
+
+    const unmatchedPlayers = (existingTeam.players || []).filter(player => !usedPlayers.has(player));
+    if(unmatchedPlayers.length){
+      console.warn(`Warning: ${team.code} has ${unmatchedPlayers.length} previously saved player(s) that no longer matched the latest import and were not carried forward.`);
+    }
+
+    return {
+      ...existingTeam,
+      ...team,
+      players
+    };
+  });
+}
+
+function countPlayersWithField(teams, field){
+  return (teams || []).reduce((sum, team) => {
+    return sum + (team.players || []).filter(player => hasMeaningfulValue(player?.[field])).length;
+  }, 0);
+}
+
+function isFallbackSearchUrl(url=''){
+  return /Special:Search/i.test(String(url || ''));
+}
+
+function countPlayersMatching(teams, predicate){
+  return (teams || []).reduce((sum, team) => {
+    return sum + (team.players || []).filter(player => predicate(player || {})).length;
+  }, 0);
+}
+
+function assertNoMajorRosterDataLoss(existingRosters, nextTeams){
+  if(!existingRosters?.teams?.length) return;
+
+  const checks = [
+    { field: 'name_zh', label: 'zh-HK player names', minExisting: 50 },
+    { field: 'club_zh', label: 'zh-HK club names', minExisting: 50 },
+    { field: 'photo_url', label: 'player photo URLs', minExisting: 50 },
+    {
+      label: 'direct player profile URLs',
+      minExisting: 50,
+      count: teams => countPlayersMatching(teams, player => {
+        return hasMeaningfulValue(player.profile_url) && !isFallbackSearchUrl(player.profile_url);
+      })
+    }
+  ];
+
+  const issues = checks.flatMap(check => {
+    const counter = typeof check.count === 'function'
+      ? check.count
+      : (teams => countPlayersWithField(teams, check.field));
+    const existingCount = counter(existingRosters.teams);
+    const nextCount = counter(nextTeams);
+    if(existingCount < check.minExisting) return [];
+
+    const minimumSafeCount = Math.floor(existingCount * 0.9);
+    if(nextCount >= minimumSafeCount) return [];
+
+    return [{
+      ...check,
+      existingCount,
+      nextCount,
+      minimumSafeCount
+    }];
+  });
+
+  if(!issues.length) return;
+
+  const message = issues.map(issue => {
+    return `${issue.label}: had ${issue.existingCount}, would drop to ${issue.nextCount}, safety floor ${issue.minimumSafeCount}`;
+  }).join('; ');
+
+  if(ALLOW_ROSTER_DATA_DROP){
+    console.warn(`Warning: allowing major roster data drop because ALLOW_ROSTER_DATA_DROP=true. ${message}`);
+    return;
+  }
+
+  throw new Error(
+    `Safety stop: update-official-rosters would remove too much saved roster data. ${message}. `
+    + 'If you intentionally want to accept that loss, rerun with ALLOW_ROSTER_DATA_DROP=true.'
+  );
 }
 
 function parsePdfText(text){
@@ -341,6 +528,7 @@ async function enrichPlayer(player, team){
 }
 
 async function main(){
+  const existingRosters = readExistingRosters();
   const pdf = path.join(TMP_DIR, 'SquadLists-English.pdf');
   const txt = path.join(TMP_DIR, 'SquadLists-English.txt');
   const pdftotextBin = resolvePdfToTextBin();
@@ -366,14 +554,22 @@ async function main(){
     }
   }
 
+  const mergedTeams = mergeExistingTeams(teams, existingRosters);
+  assertNoMajorRosterDataLoss(existingRosters, mergedTeams);
+  const note = mergeRosterNotes(
+    'English roster, position, club, caps/goals and coaches come from the official FIFA squad PDF. profile_url/photo_url/name_zh may be enriched from Wikipedia/Wikidata and should be checked for HK wording.',
+    existingRosters?.note || ''
+  );
+
   const out = {
+    ...existingRosters,
     source: 'FIFA official squad PDF + Wikipedia/Wikidata enrichment',
     source_url: PDF_URL,
     updatedAt: new Date().toISOString(),
-    note: 'English roster, position, club, caps/goals and coaches come from the official FIFA squad PDF. profile_url/photo_url/name_zh may be enriched from Wikipedia/Wikidata and should be checked for HK wording.',
-    teams
+    note,
+    teams: mergedTeams
   };
-  fs.writeFileSync(path.join(DATA_DIR, 'official-rosters.json'), JSON.stringify(out, null, 2));
+  fs.writeFileSync(OFFICIAL_ROSTERS_PATH, JSON.stringify(out, null, 2));
   console.log(`Wrote data/official-rosters.json`);
 }
 

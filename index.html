@@ -3,22 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FIFA World Cup 2026 Roster Tracker</title>
+  <title>FIFA World Cup 2026 Team Center</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="hero">
     <div>
       <p class="eyebrow">FIFA World Cup 2026</p>
-      <h1>Roster Tracker<br><span>球隊名單追蹤</span></h1>
+      <h1>World Cup Team Center<br><span>世界盃球隊中心</span></h1>
       <p class="subtitle">Check every group, team, fixture, standing, player, photo link, and Hong Kong Traditional Chinese name in one static GitHub Pages site.</p>
-    </div>
-    <div class="source-card">
-      <strong>Data sources</strong>
-      <a href="https://www.football-data.org/" target="_blank" rel="noopener">football-data.org fixtures/standings</a>
-      <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/teams" target="_blank" rel="noopener">FIFA team pages</a>
-      <a href="https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf" target="_blank" rel="noopener">Official squad list PDF</a>
-      <a href="https://inside.fifa.com/fifa-world-ranking/men" target="_blank" rel="noopener">FIFA world ranking</a>
     </div>
   </header>
 
@@ -34,6 +27,11 @@
 
     <section class="controls">
       <input id="search" type="search" placeholder="Search team, player, club, fixture / 搜尋球隊、球員、球會或賽程" />
+      <select id="teamSort" data-show-on-teams="true" title="Sort teams on the teams page">
+        <option value="group-alpha">Default: group + name</option>
+        <option value="group-ranking">World ranking in group</option>
+        <option value="overall-ranking">World ranking overall</option>
+      </select>
       <select id="groupFilter" class="multi-dropdown-source" data-hide-on-teams="true" data-placeholder="All groups / 全部組別" multiple title="Use Ctrl/Cmd-click to select multiple groups"><option value="all">All groups / 全部組別</option></select>
       <select id="teamFilter" class="multi-dropdown-source" data-hide-on-teams="true" data-placeholder="All teams / 全部球隊" multiple title="Use Ctrl/Cmd-click to select multiple teams"><option value="all">All teams / 全部球隊</option></select>
       <select id="positionFilter" class="multi-dropdown-source" data-hide-on-teams="true" data-placeholder="All positions / 全部位置" multiple title="Use Ctrl/Cmd-click to select multiple positions"><option value="all">All positions / 全部位置</option></select>
@@ -74,7 +72,7 @@
     <section id="fixturesView" class="view">
       <section class="panel">
         <h2>Fixtures & results / 賽程及賽果</h2>
-        <p class="filter-note">Use the same search/group/team filters to narrow fixtures.</p>
+        <p class="filter-note">Use the same search/group/team filters to narrow fixtures. Kickoff times are shown in your local timezone.</p>
         <div class="fixture-grouping-controls" aria-label="Fixture grouping mode">
           <button class="fixture-grouping-btn active" id="fixtureGroupingDate" type="button" data-mode="date-group">Date then group</button>
           <button class="fixture-grouping-btn" id="fixtureGroupingGroup" type="button" data-mode="group-date">Group then date</button>
@@ -96,7 +94,14 @@
   </div>
 
   <footer>
-    <p>Editable static website. Use Hong Kong Traditional Chinese for every zh-HK field. Manual roster data lives in <code>data.js</code>. Dynamic fixtures/standings live in <code>data/live-*.json</code>.</p>
+    <div class="source-card footer-source-card" id="sourceCard">
+      <strong>Data sources</strong>
+      <a href="https://www.football-data.org/" target="_blank" rel="noopener">football-data.org fixtures/standings</a>
+      <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/teams" target="_blank" rel="noopener">FIFA team pages</a>
+      <a href="https://fdp.fifa.org/assetspublic/ce281/pdf/SquadLists-English.pdf" target="_blank" rel="noopener">Official squad list PDF</a>
+      <a href="https://inside.fifa.com/fifa-world-ranking/men" target="_blank" rel="noopener">FIFA world ranking</a>
+      <a href="https://www.sportsroad.hk/archives/623071/%E4%B8%96%E7%95%8C%E7%9B%83%EF%BD%9C48%E5%BC%B7%E9%99%A3%E5%AE%B9%E5%85%A8%E6%AA%A2%E9%96%B1-%E7%90%83%E5%93%A1%E5%90%8D%E5%96%AE%E4%B8%80%E8%A6%BD%EF%BC%88%E6%8C%81%E7%BA%8C%E6%9B%B4%E6%96%B0/" target="_blank" rel="noopener">Sportsroad squad tracker</a>
+    </div>
   </footer>
 
   <script src="data.js"></script>

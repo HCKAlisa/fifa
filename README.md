@@ -104,6 +104,8 @@ FOOTBALL_DATA_COMPETITION=WC
 FOOTBALL_DATA_SEASON=2026
 ENABLE_PROFILE_ENRICHMENT=true
 PORT=5173
+# Leave unset unless you intentionally accept losing saved zh-HK names/URLs/photos.
+# ALLOW_ROSTER_DATA_DROP=true
 ```
 
 Useful variables:
@@ -115,6 +117,7 @@ Useful variables:
 - `FIFA_SQUAD_PDF_URL`: override the official squad PDF URL
 - `PDFTOTEXT_BIN`: full path to `pdftotext` if it is not on your PATH
 - `PORT`: local preview port
+- `ALLOW_ROSTER_DATA_DROP`: emergency override for `npm run update:rosters`; leave unset unless you intentionally want to allow a major drop in saved zh-HK names, profile URLs, or photos
 - `WIKI_REQUEST_DELAY_MS`, `WIKI_MAX_RETRIES`, `WIKI_MAX_PLAYERS_PER_RUN`, `WIKI_SAVE_EVERY`: optional tuning for the repair script
 
 ## Scripts
@@ -133,6 +136,7 @@ Useful variables:
 If you are refreshing project data locally, this is the cleanest order:
 
 1. Run `npm run update:rosters`
+   If the roster safety check stops here, do not set `ALLOW_ROSTER_DATA_DROP=true` unless you intentionally want to accept that data loss.
 2. Optional: place a Sportsroad HTML snapshot at `.tmp/sportsroad.html`, then run `npm run update:sportsroad-zh`
 3. Run `npm run update:team-metadata`
 4. Run `npm run update:football-data`

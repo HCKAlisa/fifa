@@ -1,32 +1,44 @@
 const TEAMS = Array.isArray(window.TEAMS) ? window.TEAMS : [];
 const groups = [...new Set(TEAMS.map(t => t.group))].sort();
 const PLAYER_VIEW_STORAGE_KEY = 'wc2026-player-view';
-const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], search:'', selected:null, fixtureGrouping:'date-group', playerView:readStoredPlayerView() };
+const MOBILE_PLAYER_VIEW_BREAKPOINT = 760;
+const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], search:'', selected:null, fixtureGrouping:'date-group', playerView:readStoredPlayerView(), teamSort:'group-alpha' };
 const live = { matches:[], standings:null, meta:null, teamsApi:[], officialRosters:null, teamMetadata:null };
 const originalManualPlayers = new Map(TEAMS.map(t => [t.code, (t.players || []).filter(p => p.confidence !== 'Example only')]));
 
 const groupFilter = document.querySelector('#groupFilter');
 const groupTabs = document.querySelector('#groupTabs');
 const grid = document.querySelector('#teamsGrid');
+const controls = document.querySelector('.controls');
 const search = document.querySelector('#search');
 const details = document.querySelector('#teamDetails');
 const teamModal = document.querySelector('#teamModal');
 const teamModalClose = document.querySelector('#teamModalClose');
+const teamSort = document.querySelector('#teamSort');
 const teamFilter = document.querySelector('#teamFilter');
 const positionFilter = document.querySelector('#positionFilter');
 const stageFilter = document.querySelector('#stageFilter');
 const liveStatus = document.querySelector('#liveStatus');
 const fixtureGroupingButtons = [...document.querySelectorAll('.fixture-grouping-btn')];
 const teamHiddenControls = [...document.querySelectorAll('[data-hide-on-teams="true"]')];
+const teamVisibleControls = [...document.querySelectorAll('[data-show-on-teams="true"]')];
 const multiDropdownSources = [...document.querySelectorAll('.multi-dropdown-source')];
 
 const teamByCode = Object.fromEntries(TEAMS.map(t => [t.code, t]));
 
+function isMobileViewport(){
+  return typeof window !== 'undefined'
+    && typeof window.matchMedia === 'function'
+    && window.matchMedia(`(max-width:${MOBILE_PLAYER_VIEW_BREAKPOINT}px)`).matches;
+}
+
 function readStoredPlayerView(){
   try{
-    return localStorage.getItem(PLAYER_VIEW_STORAGE_KEY) === 'list' ? 'list' : 'grid';
+    const storedValue = localStorage.getItem(PLAYER_VIEW_STORAGE_KEY);
+    if(storedValue === 'list' || storedValue === 'grid') return storedValue;
+    return isMobileViewport() ? 'list' : 'grid';
   }catch(err){
-    return 'grid';
+    return isMobileViewport() ? 'list' : 'grid';
   }
 }
 
@@ -263,6 +275,20 @@ function formatDateTime(value){
   return d.toLocaleString(undefined, { dateStyle:'medium', timeStyle:'short' });
 }
 
+function formatFixtureKickoff(value){
+  if(!value) return 'TBD';
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return value;
+  return new Intl.DateTimeFormat(undefined, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  }).format(d);
+}
+
 function formatCoach(team){
   if(team?.coach && team?.coach_zh) return `${team.coach} / ${team.coach_zh}`;
   return team?.coach || team?.coach_zh || '';
@@ -270,6 +296,26 @@ function formatCoach(team){
 
 function formatRanking(team){
   return team?.ranking ? `#${team.ranking}` : '';
+}
+
+function teamRankingValue(team){
+  const value = Number.parseInt(String(team?.ranking || '').replace(/[^0-9]/g, ''), 10);
+  return Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+}
+
+function formatOverallTeamRank(rank, total){
+  if(!Number.isFinite(rank)) return 'TBD';
+  return `#${rank} / ${total}`;
+}
+
+function overallTeamRankMap(){
+  const sortByName = (a, b) => a.en.localeCompare(b.en) || a.zh.localeCompare(b.zh) || a.code.localeCompare(b.code);
+  const sortByOverallRanking = (a, b) => teamRankingValue(a) - teamRankingValue(b) || a.group.localeCompare(b.group) || sortByName(a, b);
+  return new Map(
+    TEAMS.slice()
+      .sort(sortByOverallRanking)
+      .map((team, index) => [team.code, index + 1])
+  );
 }
 
 function getTeamByName(name=''){
@@ -321,7 +367,11 @@ function formatFixtureDateLabel(value){
   if(!value) return 'TBD';
   const d = new Date(value);
   if(Number.isNaN(d.getTime())) return value;
-  return d.toLocaleDateString(undefined, { weekday:'short', month:'short', day:'numeric' });
+  return new Intl.DateTimeFormat(undefined, {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  }).format(d);
 }
 
 function isTodayFixtureDate(value){
@@ -503,7 +553,7 @@ function renderFixtureCard(match){
   return `
     <article class="fixture-card ${placeholder ? 'fixture-card-placeholder' : ''}">
       <div class="fixture-card-top">
-        <div class="fixture-kickoff">${escapeHtml(formatDateTime(match.utcDate))}</div>
+        <div class="fixture-kickoff">${escapeHtml(formatFixtureKickoff(match.utcDate))}</div>
         <div class="fixture-card-tags">
           <span class="fixture-status ${escapeHtml(fixtureStatusClass(match.status))}">${escapeHtml(statusText(match.status))}</span>
           ${placeholder ? '<span class="fixture-placeholder-badge">Teams TBD</span>' : ''}
@@ -562,12 +612,26 @@ function renderTabs(){
 }
 
 function renderGrid(){
-  const teams = TEAMS.filter(teamMatches).sort((a,b)=> a.group.localeCompare(b.group) || a.en.localeCompare(b.en));
+  const teams = TEAMS.filter(teamMatches);
   if(!teams.length){
     grid.classList.remove('grouped');
     grid.innerHTML = '<div class="empty-roster">No teams match your filters.</div>';
     return;
   }
+
+  const sortMode = state.teamSort;
+  const sortByName = (a, b) => a.en.localeCompare(b.en) || a.zh.localeCompare(b.zh) || a.code.localeCompare(b.code);
+  const sortByGroupThenName = (a, b) => a.group.localeCompare(b.group) || sortByName(a, b);
+  const sortByGroupThenRanking = (a, b) => a.group.localeCompare(b.group) || teamRankingValue(a) - teamRankingValue(b) || sortByName(a, b);
+  const sortByOverallRanking = (a, b) => teamRankingValue(a) - teamRankingValue(b) || a.group.localeCompare(b.group) || sortByName(a, b);
+  const overallRankByCode = overallTeamRankMap();
+  const sortedTeams = teams.slice().sort(
+    sortMode === 'overall-ranking'
+      ? sortByOverallRanking
+      : sortMode === 'group-ranking'
+        ? sortByGroupThenRanking
+        : sortByGroupThenName
+  );
 
   const cardMarkup = t => `
     <article class="team-card" onclick="selectTeam('${escapeHtml(t.code)}')">
@@ -577,21 +641,37 @@ function renderGrid(){
       <div class="meta">
         <div><strong>Code:</strong> ${escapeHtml(t.code)}</div>
         <div><strong>Ranking:</strong> ${escapeHtml(formatRanking(t) || 'Add FIFA rank')}</div>
+        <div><strong>Overall:</strong> ${escapeHtml(formatOverallTeamRank(overallRankByCode.get(t.code), TEAMS.length))}</div>
         <div><strong>Head coach:</strong> ${escapeHtml(formatCoach(t) || 'Add coach')}</div>
-        <div><strong>Players:</strong> ${filteredPlayers(t).length}${t.players.length ? ` / ${t.players.length}` : ' / Roster not added yet'}</div>
       </div>
     </article>`;
+
+  if(sortMode === 'overall-ranking'){
+    grid.classList.remove('grouped');
+    grid.innerHTML = `
+      <section class="team-group-section">
+        <div class="fixture-group-head">
+          <h3>World ranking / 世界排名</h3>
+          <span class="muted">${sortedTeams.length} team${sortedTeams.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="team-group-grid">
+          ${sortedTeams.map(cardMarkup).join('')}
+        </div>
+      </section>
+    `;
+    return;
+  }
 
   if(state.groups.length === 0){
     grid.classList.add('grouped');
     const grouped = groups
-      .map(group => [group, teams.filter(team => team.group === group)])
+      .map(group => [group, sortedTeams.filter(team => team.group === group)])
       .filter(([, groupTeams]) => groupTeams.length);
     grid.innerHTML = grouped.map(([group, groupTeams]) => `
       <section class="team-group-section">
         <div class="fixture-group-head">
           <h3>Group ${escapeHtml(group)}</h3>
-          <span class="muted">${groupTeams.length} team${groupTeams.length === 1 ? '' : 's'}</span>
+          <span class="muted">${groupTeams.length} team${groupTeams.length === 1 ? '' : 's'}${sortMode === 'group-ranking' ? ' · Sorted by world ranking' : ''}</span>
         </div>
         <div class="team-group-grid">
           ${groupTeams.map(cardMarkup).join('')}
@@ -602,7 +682,17 @@ function renderGrid(){
   }
 
   grid.classList.remove('grouped');
-  grid.innerHTML = teams.map(cardMarkup).join('');
+  grid.innerHTML = `
+    <section class="team-group-section">
+      <div class="fixture-group-head">
+        <h3>${sortMode === 'group-ranking' ? 'Group ranking order / 小組排名次序' : 'Teams / 球隊'}</h3>
+        <span class="muted">${sortedTeams.length} team${sortedTeams.length === 1 ? '' : 's'}${sortMode === 'group-ranking' ? ' · Sorted by world ranking' : ''}</span>
+      </div>
+      <div class="team-group-grid">
+        ${sortedTeams.map(cardMarkup).join('')}
+      </div>
+    </section>
+  `;
 }
 
 function closeTeamModal(){
@@ -644,6 +734,61 @@ function playerNameCell(p){
 function playerSourceCell(p){
   const url = p.profile_url || p.source_url || p.info_url || '';
   return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">Open profile</a>` : '<span class="muted">No link</span>';
+}
+
+function playerDrawerSummary(p, t, options={}){
+  const { showTeam = false, showPosition = true } = options;
+  const summaryBits = [];
+  if(showTeam && t) summaryBits.push(`${escapeHtml(t.en)} / <span class="zh">${escapeHtml(t.zh)}</span>`);
+  if(showPosition && p.position) summaryBits.push(escapeHtml(p.position));
+  if(p.number) summaryBits.push(`#${escapeHtml(p.number)}`);
+  return `
+    <div class="player-drawer-summary-main">
+      ${playerPhoto(p)}
+      <div class="player-drawer-heading">
+        <div class="player-drawer-name"><strong>${escapeHtml(p.name_en || 'Unknown player')}</strong></div>
+        ${p.name_zh ? `<div class="player-drawer-zh">${escapeHtml(p.name_zh)}</div>` : ''}
+        ${summaryBits.length ? `<div class="player-drawer-summary-meta">${summaryBits.map(bit => `<span class="player-drawer-chip">${bit}</span>`).join('')}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function playerDrawerDetails(p, t, options={}){
+  const { showTeam = false, showPosition = true } = options;
+  const dob = formatPlayerDob(p);
+  const clubEn = p.club_en || p.club || '';
+  const detailItems = [];
+  if(showTeam && t) detailItems.push(['Team', `${escapeHtml(t.en)} / <span class="zh">${escapeHtml(t.zh)}</span>`]);
+  if(showPosition) detailItems.push(['Position', escapeHtml(p.position || 'TBD')]);
+  if(p.number) detailItems.push(['Number', `#${escapeHtml(p.number)}`]);
+  if(dob) detailItems.push(['DOB (Age)', escapeHtml(dob)]);
+  detailItems.push(['Club EN', escapeHtml(clubEn || 'TBD')]);
+  if(p.club_zh) detailItems.push(['Club zh-HK', `<span class="zh">${escapeHtml(p.club_zh)}</span>`]);
+  if(p.profile_url || p.source_url || p.info_url) detailItems.push(['Profile', playerSourceCell(p)]);
+  return `
+    <div class="player-drawer-detail-grid">
+      ${detailItems.map(([label, value]) => `
+        <div class="player-drawer-detail">
+          <span class="player-drawer-detail-label">${label}</span>
+          <span class="player-drawer-detail-value">${value}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function playerDrawer(p, t, options={}){
+  return `
+    <details class="player-drawer">
+      <summary class="player-drawer-summary">
+        ${playerDrawerSummary(p, t, options)}
+      </summary>
+      <div class="player-drawer-body">
+        ${playerDrawerDetails(p, t, options)}
+      </div>
+    </details>
+  `;
 }
 
 function parsePlayerDob(value=''){
@@ -690,36 +835,6 @@ function formatPlayerDob(p){
     year: 'numeric'
   }).format(date);
   return age >= 0 ? `${formattedDate} (${age})` : formattedDate;
-}
-
-function playerRow(p, t){
-  const dob = formatPlayerDob(p);
-  return `<tr>
-    <td data-label="Photo">${playerPhoto(p)}</td>
-    <td data-label="Name EN">${playerNameCell(p)}</td>
-    <td data-label="Name zh-HK">${escapeHtml(p.name_zh || '')}</td>
-    <td data-label="Team">${escapeHtml(t?.en || '')} / ${escapeHtml(t?.zh || '')}</td>
-    <td data-label="Pos">${escapeHtml(p.position || '')}</td>
-    <td data-label="#">${escapeHtml(p.number || '')}</td>
-    <td data-label="DOB (Age)">${escapeHtml(dob)}</td>
-    <td data-label="Club EN">${escapeHtml(p.club_en || p.club || '')}</td>
-    <td data-label="Club zh-HK">${escapeHtml(p.club_zh || '')}</td>
-  </tr>`;
-}
-
-function teamPlayerRow(p, options={}){
-  const { showPosition = true } = options;
-  const dob = formatPlayerDob(p);
-  return `<tr>
-    <td data-label="Photo">${playerPhoto(p)}</td>
-    <td data-label="Name EN">${playerNameCell(p)}</td>
-    <td data-label="Name zh-HK">${escapeHtml(p.name_zh || '')}</td>
-    ${showPosition ? `<td data-label="Pos">${escapeHtml(p.position || '')}</td>` : ''}
-    <td data-label="#">${escapeHtml(p.number || '')}</td>
-    <td data-label="DOB (Age)">${escapeHtml(dob)}</td>
-    <td data-label="Club EN">${escapeHtml(p.club_en || p.club || '')}</td>
-    <td data-label="Club zh-HK">${escapeHtml(p.club_zh || '')}</td>
-  </tr>`;
 }
 
 function groupPlayersByPosition(players){
@@ -796,6 +911,7 @@ function renderDetails(){
   const t = state.selected;
   if(!t){ details.className='details-empty'; details.textContent='Choose a team card to see roster details. / 選擇一隊查看名單詳情。'; return; }
   details.className = '';
+  const overallRankByCode = overallTeamRankMap();
   const shownPlayers = filteredPlayers(t);
   const groupedPlayers = groupPlayersByPosition(shownPlayers);
   const groupedContent = groupedPlayers.map(([position, players]) => `
@@ -806,14 +922,7 @@ function renderDetails(){
       </div>
       ${state.playerView === 'grid'
         ? `<div class="player-card-grid">${players.map(player => playerCard(player, t, { showPosition:false })).join('')}</div>`
-        : `<div class="table-wrap stack-mobile">
-          <table>
-            <thead>
-              <tr><th>Photo</th><th>Name EN</th><th>Name zh-HK</th><th>#</th><th>DOB (Age)</th><th>Club EN</th><th>Club zh-HK</th></tr>
-            </thead>
-            <tbody>${players.map(player => teamPlayerRow(player, { showPosition:false })).join('')}</tbody>
-          </table>
-        </div>`}
+        : `<div class="player-drawer-list">${players.map(player => playerDrawer(player, t, { showPosition:false })).join('')}</div>`}
     </section>
   `).join('');
   details.innerHTML = `
@@ -821,7 +930,7 @@ function renderDetails(){
       <div class="flag">${escapeHtml(t.flag)}</div>
       <div>
         <h2>${escapeHtml(t.en)} / <span class="zh">${escapeHtml(t.zh)}</span></h2>
-        <span class="badge">Group ${escapeHtml(t.group)}</span><span class="badge">${escapeHtml(t.code)}</span><span class="badge">Rank: ${escapeHtml(formatRanking(t) || 'TBD')}</span><span class="badge">Coach: ${escapeHtml(formatCoach(t) || 'TBD')}</span>
+        <span class="badge">Group ${escapeHtml(t.group)}</span><span class="badge">${escapeHtml(t.code)}</span><span class="badge">Rank: ${escapeHtml(formatRanking(t) || 'TBD')}</span><span class="badge">Overall: ${escapeHtml(formatOverallTeamRank(overallRankByCode.get(t.code), TEAMS.length))}</span><span class="badge">Coach: ${escapeHtml(formatCoach(t) || 'TBD')}</span>
       </div>
     </div>
     ${t.players.length ? `${renderPlayerViewToggle('Roster layout / 名單版面')}<div class="filter-note">Showing ${shownPlayers.length} of ${t.players.length} players based on current filters, grouped by position.</div>${groupedContent || '<div class="empty-roster">No players match these filters.</div>'}` : `<div class="empty-roster">Roster data is ready to add in <code>data.js</code>. Add <code>dob</code> as <code>DD/MM/YYYY</code>, <code>photo_url</code> for the player image, and <code>profile_url</code> for the player info/source page. Use <code>club_en</code> and <code>club_zh</code> for club names.</div>`}
@@ -830,13 +939,14 @@ function renderDetails(){
 
 function renderAllPlayers(){
   const entries = filteredPlayerEntries();
-  const rows = entries.map(({ player, team }) => playerRow(player, team)).join('');
   const teamCount = new Set(entries.map(entry => entry.team.code)).size;
   const content = state.playerView === 'grid'
     ? (entries.length
       ? `<div class="player-card-grid">${entries.map(({ player, team }) => playerCard(player, team, { showTeam:true })).join('')}</div>`
       : '<div class="empty-roster">No players match these filters, or rosters are not added yet.</div>')
-    : `<div class="table-wrap stack-mobile"><table><thead><tr><th>Photo</th><th>Name EN</th><th>Name zh-HK</th><th>Team</th><th>Pos</th><th>#</th><th>DOB (Age)</th><th>Club EN</th><th>Club zh-HK</th></tr></thead><tbody>${rows || '<tr><td colspan="9" class="muted">No players match these filters, or rosters are not added yet.</td></tr>'}</tbody></table></div>`;
+    : (entries.length
+      ? `<div class="player-drawer-list">${entries.map(({ player, team }) => playerDrawer(player, team, { showTeam:true })).join('')}</div>`
+      : '<div class="empty-roster">No players match these filters, or rosters are not added yet.</div>');
   document.querySelector('#allPlayers').innerHTML = `
     ${renderPlayerViewToggle('Player layout / 球員版面')}
     <div class="filter-note">Showing ${entries.length} player${entries.length === 1 ? '' : 's'} across ${teamCount} team${teamCount === 1 ? '' : 's'}.</div>
@@ -1026,9 +1136,13 @@ function syncTeamsViewControls(){
 
 function updateControlVisibility(){
   const hideForTeams = state.view === 'teams';
+  controls?.classList.toggle('teams-mode', hideForTeams);
   teamHiddenControls.forEach(control => {
     control.hidden = hideForTeams;
     if(control.tagName === 'SELECT') refreshMultiDropdown(control);
+  });
+  teamVisibleControls.forEach(control => {
+    control.hidden = !hideForTeams;
   });
   if(state.view === 'standings' || state.view === 'fixtures'){
     state.positions = [];
@@ -1104,6 +1218,10 @@ document.addEventListener('keydown', event => {
   }
 });
 search.addEventListener('input', e => { state.search = e.target.value; render(); });
+teamSort?.addEventListener('change', e => {
+  state.teamSort = e.target.value || 'group-alpha';
+  renderGrid();
+});
 groupFilter.addEventListener('change', e => { state.groups = getMultiSelectValues(e.target); render(); });
 teamFilter.addEventListener('change', e => { state.teams = getMultiSelectValues(e.target); render(); });
 positionFilter.addEventListener('change', e => { state.positions = getMultiSelectValues(e.target); render(); });
