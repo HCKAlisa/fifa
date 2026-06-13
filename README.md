@@ -148,11 +148,10 @@ The workflow at `.github/workflows/update-worldcup-data.yml`:
 - checks every 15 minutes on GitHub Actions schedule
 - refreshes `data/live-*.json` only when a match is about 3 hours past kickoff
 - skips scheduled live refreshes before the first match of the configured competition/season
-- can also be started manually for a full refresh
-- installs `poppler-utils` only for the manual roster refresh
-- updates rosters from the FIFA PDF during manual runs
+- can also be started manually for a live-data refresh
 - updates fixtures and standings from football-data.org
-- commits refreshed JSON back to the repo
+- does not update rosters or player profiles
+- commits refreshed `data/live-*.json` back to the repo
 
 ### Required GitHub secret
 
@@ -164,8 +163,6 @@ Add this repository secret for the workflow:
 
 - `FOOTBALL_DATA_COMPETITION` with default `WC`
 - `FOOTBALL_DATA_SEASON` with default `2026`
-
-When running the workflow manually, you can set `enrich_profiles` to `false` to skip Wikipedia/Wikidata enrichment and make the roster step faster.
 
 ## Notes
 
