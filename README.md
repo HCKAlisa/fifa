@@ -62,6 +62,36 @@ http://localhost:5173
 
 You can also change the port with `PORT` in `.env`.
 
+## GitHub Pages deployment
+
+This repo now includes a GitHub Pages deployment workflow at `.github/workflows/deploy-pages.yml`.
+
+### One-time GitHub setup
+
+1. Push this repo to GitHub on the `main` branch
+2. Open `Settings -> Pages`
+3. Set `Source` to `GitHub Actions`
+
+After that, every push to `main` will publish the site automatically. Manual runs are also available from the `Actions` tab.
+
+### What gets deployed
+
+Run this locally if you want to verify the publish output:
+
+```bash
+npm run build:pages
+```
+
+That command creates `dist/` and copies only the static site files that GitHub Pages should serve:
+
+- `index.html`
+- `styles.css`
+- `app.js`
+- `data.js`
+- `data/*.json`
+
+The deploy workflow uploads `dist/` to GitHub Pages, so generated project files like scripts and repo metadata are not published with the website.
+
 ## Environment variables
 
 Create a local `.env` file yourself if you want script configuration. There is currently no `.env.example` in this repo.

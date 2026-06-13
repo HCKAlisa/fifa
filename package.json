@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node scripts/serve.js",
     "preview": "node scripts/serve.js",
+    "build:pages": "node scripts/build-pages.js",
     "update:football-data": "node scripts/update-football-data.js",
     "update:rosters": "node scripts/update-official-rosters.js",
     "update:team-metadata": "node scripts/update-team-metadata.js",
