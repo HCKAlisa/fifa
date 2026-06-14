@@ -274,7 +274,7 @@
   {
     "id": 537351,
     "utcDate": "2026-06-14T17:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -293,22 +293,22 @@
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
-        "away": 0
+        "home": 7,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 1
       }
     }
   },
   {
     "id": 537357,
     "utcDate": "2026-06-14T20:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -327,11 +327,11 @@
       "crest": "https://crests.football-data.org/766.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
