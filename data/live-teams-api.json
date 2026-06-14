@@ -7459,8 +7459,8 @@
     ],
     "coach": {
       "id": 123774,
-      "firstName": "Sébastien Bernard Henri Clément",
-      "lastName": null,
+      "firstName": "Sébastien",
+      "lastName": "Migné",
       "name": "Sébastien Migné",
       "dateOfBirth": "1972-11-30",
       "nationality": "France",
@@ -7534,6 +7534,13 @@
         "nationality": "Haiti"
       },
       {
+        "id": 253661,
+        "name": "Garven-Michee Metusala",
+        "position": "Defence",
+        "dateOfBirth": "1999-12-31",
+        "nationality": "Haiti"
+      },
+      {
         "id": 256398,
         "name": "Keeto Thermoncy",
         "position": "Defence",
@@ -7545,13 +7552,6 @@
         "name": "Wilguens Paugain",
         "position": "Defence",
         "dateOfBirth": "2001-08-24",
-        "nationality": "Haiti"
-      },
-      {
-        "id": 433,
-        "name": "Leverton Pierre",
-        "position": "Midfield",
-        "dateOfBirth": "1998-03-09",
         "nationality": "Haiti"
       },
       {
