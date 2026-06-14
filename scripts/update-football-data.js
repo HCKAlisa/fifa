@@ -34,6 +34,16 @@ async function writeJson(filename, data) {
   await fs.writeFile(path.join(OUT_DIR, filename), JSON.stringify(data, null, 2) + '\n');
 }
 
+async function readJson(filename) {
+  try {
+    const text = await fs.readFile(path.join(OUT_DIR, filename), 'utf8');
+    return JSON.parse(text);
+  } catch (err) {
+    if (err && err.code === 'ENOENT') return null;
+    throw err;
+  }
+}
+
 function normalizeGroupFromMatch(match) {
   // football-data.org may expose group as a stage/group string depending on competition.
   // Keep the raw value so the frontend can display it.
@@ -47,19 +57,22 @@ function getFirstMatchUtcDate(matches) {
     .sort((a, b) => Date.parse(a) - Date.parse(b))[0] || null;
 }
 
-function getScheduledUpdateMatch(matches, nowMs) {
+function getScheduledUpdateMatch(matches, nowMs, lastRefreshMs) {
   if (!Number.isFinite(MATCH_UPDATE_OFFSET_HOURS) || MATCH_UPDATE_OFFSET_HOURS <= 0) return null;
-  if (!Number.isFinite(MATCH_UPDATE_WINDOW_MINUTES) || MATCH_UPDATE_WINDOW_MINUTES <= 0) return null;
 
   const offsetMs = MATCH_UPDATE_OFFSET_HOURS * 60 * 60 * 1000;
-  const windowMs = MATCH_UPDATE_WINDOW_MINUTES * 60 * 1000;
+  const lastEligibleRefreshMs = Number.isFinite(lastRefreshMs) ? lastRefreshMs : 0;
 
-  return matches.find(match => {
+  return matches.reduce((selected, match) => {
     const kickoffMs = Date.parse(match?.utcDate || '');
-    if (!Number.isFinite(kickoffMs)) return false;
+    if (!Number.isFinite(kickoffMs)) return selected;
     const targetMs = kickoffMs + offsetMs;
-    return nowMs >= targetMs && nowMs < targetMs + windowMs;
-  }) || null;
+    if (targetMs > nowMs || targetMs <= lastEligibleRefreshMs) return selected;
+    if (!selected || targetMs > selected.targetMs) {
+      return { match, targetMs };
+    }
+    return selected;
+  }, null);
 }
 
 async function main() {
@@ -69,19 +82,29 @@ async function main() {
   const matches = matchesPayload.matches || [];
   const firstMatchUtcDate = getFirstMatchUtcDate(matches);
   const nowMs = Date.now();
+  const previousMeta = await readJson('live-meta.json');
+  const previousUpdatedAt = previousMeta?.updatedAt || '';
+  const previousUpdatedMs = Date.parse(previousUpdatedAt);
 
   if (SKIP_BEFORE_FIRST_MATCH && firstMatchUtcDate && nowMs < Date.parse(firstMatchUtcDate)) {
     console.log(`Skipping update because the first match has not started yet. First kickoff: ${firstMatchUtcDate}`);
     return;
   }
 
-  const scheduledUpdateMatch = getScheduledUpdateMatch(matches, nowMs);
-  if (MATCH_UPDATE_OFFSET_HOURS > 0 && !scheduledUpdateMatch) {
-    console.log(`Skipping update because no match is currently in the ${MATCH_UPDATE_OFFSET_HOURS}-hour refresh window.`);
+  const scheduledUpdate = getScheduledUpdateMatch(matches, nowMs, previousUpdatedMs);
+  if (MATCH_UPDATE_OFFSET_HOURS > 0 && !scheduledUpdate) {
+    const lastRefreshLabel = Number.isFinite(previousUpdatedMs) ? previousUpdatedAt : 'never';
+    console.log(`Skipping update because no match has newly crossed the ${MATCH_UPDATE_OFFSET_HOURS}-hour refresh threshold since the last refresh (${lastRefreshLabel}).`);
     return;
   }
-  if (scheduledUpdateMatch) {
-    console.log(`Refreshing data for match ${scheduledUpdateMatch.id} at ${MATCH_UPDATE_OFFSET_HOURS} hours after kickoff (${scheduledUpdateMatch.utcDate}).`);
+  if (scheduledUpdate) {
+    console.log(`Refreshing data for match ${scheduledUpdate.match.id} after it crossed the ${MATCH_UPDATE_OFFSET_HOURS}-hour kickoff threshold (${scheduledUpdate.match.utcDate}).`);
+    if (Number.isFinite(previousUpdatedMs) && Number.isFinite(MATCH_UPDATE_WINDOW_MINUTES) && MATCH_UPDATE_WINDOW_MINUTES > 0) {
+      const delayMinutes = Math.round((nowMs - scheduledUpdate.targetMs) / 60000);
+      if (delayMinutes > MATCH_UPDATE_WINDOW_MINUTES) {
+        console.log(`Scheduled refresh window was missed by about ${delayMinutes} minutes, so this run is catching up on the next available schedule tick.`);
+      }
+    }
   }
 
   const [standingsRes, teamsRes] = await Promise.allSettled([

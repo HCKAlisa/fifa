@@ -30,8 +30,8 @@ jobs:
           FOOTBALL_DATA_COMPETITION: ${{ vars.FOOTBALL_DATA_COMPETITION || 'WC' }}
           FOOTBALL_DATA_SEASON: ${{ vars.FOOTBALL_DATA_SEASON || '2026' }}
           SKIP_BEFORE_FIRST_MATCH: ${{ github.event_name == 'schedule' && 'true' || 'false' }}
-          MATCH_UPDATE_OFFSET_HOURS: "3"
-          MATCH_UPDATE_WINDOW_MINUTES: "15"
+          MATCH_UPDATE_OFFSET_HOURS: ${{ github.event_name == 'schedule' && '3' || '0' }}
+          MATCH_UPDATE_WINDOW_MINUTES: ${{ github.event_name == 'schedule' && '15' || '0' }}
         run: node scripts/update-football-data.js
 
       - name: Commit live API JSON
