@@ -231,6 +231,17 @@ footer {
     width: 100%;
 }
 
+@media (max-width:900px) {
+    .controls.teams-mode {
+        grid-template-columns: 1fr;
+    }
+
+    .controls.teams-mode #teamSort {
+        width: 100%;
+        max-width: none;
+    }
+}
+
 .controls button {
     cursor: pointer
 }
@@ -1226,18 +1237,31 @@ footer {
 
     .view-tabs {
         flex-wrap: nowrap;
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
         padding-bottom: 4px;
-        scrollbar-width: thin;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x proximity;
     }
 
     .view-tab {
         flex: 0 0 auto;
         white-space: nowrap;
+        scroll-snap-align: start;
+    }
+
+    .view-tabs::-webkit-scrollbar,
+    .tabs::-webkit-scrollbar {
+        display: none;
     }
 
     .controls {
         grid-template-columns: 1fr
+    }
+
+    .controls.teams-mode {
+        grid-template-columns: 1fr;
     }
 
     .controls #teamSort {
@@ -1245,14 +1269,19 @@ footer {
     }
 
     .tabs {
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
         flex-wrap: nowrap;
-        padding-bottom: 10px
+        padding-bottom: 10px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x proximity;
     }
 
     .tab {
         flex: 0 0 auto;
-        white-space: nowrap
+        white-space: nowrap;
+        scroll-snap-align: start
     }
 
     .grid,
