@@ -150,7 +150,7 @@ If you skip football-data setup, the site still works for manual/generated roste
 The workflow at `.github/workflows/update-worldcup-data.yml`:
 
 - checks every 15 minutes on GitHub Actions schedule
-- refreshes `data/live-*.json` on the first scheduled check after a match is about 3 hours past kickoff
+- refreshes `data/live-*.json` on the first scheduled check after kickoff and again on the first scheduled check after about 3 hours
 - skips scheduled live refreshes before the first match of the configured competition/season
 - can also be started manually for an immediate live-data refresh
 - updates fixtures and standings from football-data.org
