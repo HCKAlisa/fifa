@@ -88,6 +88,25 @@
         {
           "position": 4,
           "team": {
+            "id": 8873,
+            "name": "Scotland",
+            "shortName": "Scotland",
+            "tla": "SCO",
+            "crest": "https://crests.football-data.org/814.svg"
+          },
+          "playedGames": 1,
+          "form": "W",
+          "won": 1,
+          "draw": 0,
+          "lost": 0,
+          "points": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDifference": 1
+        },
+        {
+          "position": 5,
+          "team": {
             "id": 828,
             "name": "Canada",
             "shortName": "Canada",
@@ -105,7 +124,7 @@
           "goalDifference": 0
         },
         {
-          "position": 5,
+          "position": 6,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -124,7 +143,7 @@
           "goalDifference": 0
         },
         {
-          "position": 6,
+          "position": 7,
           "team": {
             "id": 8030,
             "name": "Qatar",
@@ -143,7 +162,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -162,7 +181,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 9,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -170,18 +189,18 @@
             "tla": "BRA",
             "crest": "https://crests.football-data.org/764.svg"
           },
-          "playedGames": 0,
-          "form": "",
+          "playedGames": 1,
+          "form": "D",
           "won": 0,
-          "draw": 0,
+          "draw": 1,
           "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
           "goalDifference": 0
         },
         {
-          "position": 9,
+          "position": 10,
           "team": {
             "id": 815,
             "name": "Morocco",
@@ -189,56 +208,18 @@
             "tla": "MAR",
             "crest": "https://crests.football-data.org/morocco.svg"
           },
-          "playedGames": 0,
-          "form": "",
+          "playedGames": 1,
+          "form": "D",
           "won": 0,
-          "draw": 0,
+          "draw": 1,
           "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 10,
-          "team": {
-            "id": 836,
-            "name": "Haiti",
-            "shortName": "Haiti",
-            "tla": "HAI",
-            "crest": "https://crests.football-data.org/haiti.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
           "goalDifference": 0
         },
         {
           "position": 11,
-          "team": {
-            "id": 8873,
-            "name": "Scotland",
-            "shortName": "Scotland",
-            "tla": "SCO",
-            "crest": "https://crests.football-data.org/814.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 12,
           "team": {
             "id": 779,
             "name": "Australia",
@@ -257,7 +238,7 @@
           "goalDifference": 0
         },
         {
-          "position": 13,
+          "position": 12,
           "team": {
             "id": 803,
             "name": "Turkey",
@@ -276,7 +257,7 @@
           "goalDifference": 0
         },
         {
-          "position": 14,
+          "position": 13,
           "team": {
             "id": 759,
             "name": "Germany",
@@ -295,7 +276,7 @@
           "goalDifference": 0
         },
         {
-          "position": 15,
+          "position": 14,
           "team": {
             "id": 9460,
             "name": "Curaçao",
@@ -314,7 +295,7 @@
           "goalDifference": 0
         },
         {
-          "position": 16,
+          "position": 15,
           "team": {
             "id": 8601,
             "name": "Netherlands",
@@ -333,7 +314,7 @@
           "goalDifference": 0
         },
         {
-          "position": 17,
+          "position": 16,
           "team": {
             "id": 766,
             "name": "Japan",
@@ -352,7 +333,7 @@
           "goalDifference": 0
         },
         {
-          "position": 18,
+          "position": 17,
           "team": {
             "id": 1935,
             "name": "Ivory Coast",
@@ -371,7 +352,7 @@
           "goalDifference": 0
         },
         {
-          "position": 19,
+          "position": 18,
           "team": {
             "id": 791,
             "name": "Ecuador",
@@ -390,7 +371,7 @@
           "goalDifference": 0
         },
         {
-          "position": 20,
+          "position": 19,
           "team": {
             "id": 792,
             "name": "Sweden",
@@ -409,7 +390,7 @@
           "goalDifference": 0
         },
         {
-          "position": 21,
+          "position": 20,
           "team": {
             "id": 802,
             "name": "Tunisia",
@@ -428,7 +409,7 @@
           "goalDifference": 0
         },
         {
-          "position": 22,
+          "position": 21,
           "team": {
             "id": 760,
             "name": "Spain",
@@ -447,7 +428,7 @@
           "goalDifference": 0
         },
         {
-          "position": 23,
+          "position": 22,
           "team": {
             "id": 1930,
             "name": "Cape Verde Islands",
@@ -466,7 +447,7 @@
           "goalDifference": 0
         },
         {
-          "position": 24,
+          "position": 23,
           "team": {
             "id": 805,
             "name": "Belgium",
@@ -485,7 +466,7 @@
           "goalDifference": 0
         },
         {
-          "position": 25,
+          "position": 24,
           "team": {
             "id": 825,
             "name": "Egypt",
@@ -504,7 +485,7 @@
           "goalDifference": 0
         },
         {
-          "position": 26,
+          "position": 25,
           "team": {
             "id": 801,
             "name": "Saudi Arabia",
@@ -523,7 +504,7 @@
           "goalDifference": 0
         },
         {
-          "position": 27,
+          "position": 26,
           "team": {
             "id": 758,
             "name": "Uruguay",
@@ -542,7 +523,7 @@
           "goalDifference": 0
         },
         {
-          "position": 28,
+          "position": 27,
           "team": {
             "id": 840,
             "name": "Iran",
@@ -561,7 +542,7 @@
           "goalDifference": 0
         },
         {
-          "position": 29,
+          "position": 28,
           "team": {
             "id": 783,
             "name": "New Zealand",
@@ -580,7 +561,7 @@
           "goalDifference": 0
         },
         {
-          "position": 30,
+          "position": 29,
           "team": {
             "id": 773,
             "name": "France",
@@ -599,7 +580,7 @@
           "goalDifference": 0
         },
         {
-          "position": 31,
+          "position": 30,
           "team": {
             "id": 804,
             "name": "Senegal",
@@ -618,7 +599,7 @@
           "goalDifference": 0
         },
         {
-          "position": 32,
+          "position": 31,
           "team": {
             "id": 8062,
             "name": "Iraq",
@@ -637,7 +618,7 @@
           "goalDifference": 0
         },
         {
-          "position": 33,
+          "position": 32,
           "team": {
             "id": 8872,
             "name": "Norway",
@@ -656,7 +637,7 @@
           "goalDifference": 0
         },
         {
-          "position": 34,
+          "position": 33,
           "team": {
             "id": 762,
             "name": "Argentina",
@@ -675,7 +656,7 @@
           "goalDifference": 0
         },
         {
-          "position": 35,
+          "position": 34,
           "team": {
             "id": 778,
             "name": "Algeria",
@@ -694,7 +675,7 @@
           "goalDifference": 0
         },
         {
-          "position": 36,
+          "position": 35,
           "team": {
             "id": 816,
             "name": "Austria",
@@ -713,7 +694,7 @@
           "goalDifference": 0
         },
         {
-          "position": 37,
+          "position": 36,
           "team": {
             "id": 8049,
             "name": "Jordan",
@@ -732,7 +713,7 @@
           "goalDifference": 0
         },
         {
-          "position": 38,
+          "position": 37,
           "team": {
             "id": 765,
             "name": "Portugal",
@@ -751,7 +732,7 @@
           "goalDifference": 0
         },
         {
-          "position": 39,
+          "position": 38,
           "team": {
             "id": 1934,
             "name": "Congo DR",
@@ -770,7 +751,7 @@
           "goalDifference": 0
         },
         {
-          "position": 40,
+          "position": 39,
           "team": {
             "id": 770,
             "name": "England",
@@ -789,7 +770,7 @@
           "goalDifference": 0
         },
         {
-          "position": 41,
+          "position": 40,
           "team": {
             "id": 799,
             "name": "Croatia",
@@ -808,7 +789,7 @@
           "goalDifference": 0
         },
         {
-          "position": 42,
+          "position": 41,
           "team": {
             "id": 763,
             "name": "Ghana",
@@ -827,7 +808,7 @@
           "goalDifference": 0
         },
         {
-          "position": 43,
+          "position": 42,
           "team": {
             "id": 1836,
             "name": "Panama",
@@ -846,7 +827,7 @@
           "goalDifference": 0
         },
         {
-          "position": 44,
+          "position": 43,
           "team": {
             "id": 8070,
             "name": "Uzbekistan",
@@ -865,7 +846,7 @@
           "goalDifference": 0
         },
         {
-          "position": 45,
+          "position": 44,
           "team": {
             "id": 818,
             "name": "Colombia",
@@ -884,7 +865,7 @@
           "goalDifference": 0
         },
         {
-          "position": 46,
+          "position": 45,
           "team": {
             "id": 798,
             "name": "Czechia",
@@ -900,6 +881,25 @@
           "points": 0,
           "goalsFor": 1,
           "goalsAgainst": 2,
+          "goalDifference": -1
+        },
+        {
+          "position": 46,
+          "team": {
+            "id": 836,
+            "name": "Haiti",
+            "shortName": "Haiti",
+            "tla": "HAI",
+            "crest": "https://crests.football-data.org/haiti.svg"
+          },
+          "playedGames": 1,
+          "form": "L",
+          "won": 0,
+          "draw": 0,
+          "lost": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
           "goalDifference": -1
         },
         {
@@ -1045,6 +1045,25 @@
         {
           "position": 6,
           "team": {
+            "id": 764,
+            "name": "Brazil",
+            "shortName": "Brazil",
+            "tla": "BRA",
+            "crest": "https://crests.football-data.org/764.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "position": 7,
+          "team": {
             "id": 774,
             "name": "South Africa",
             "shortName": "South Africa",
@@ -1062,7 +1081,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 798,
             "name": "Czechia",
@@ -1081,7 +1100,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 9,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -1100,7 +1119,7 @@
           "goalDifference": 0
         },
         {
-          "position": 9,
+          "position": 10,
           "team": {
             "id": 761,
             "name": "Paraguay",
@@ -1119,32 +1138,13 @@
           "goalDifference": 0
         },
         {
-          "position": 10,
+          "position": 11,
           "team": {
             "id": 788,
             "name": "Switzerland",
             "shortName": "Switzerland",
             "tla": "SUI",
             "crest": "https://crests.football-data.org/788.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 11,
-          "team": {
-            "id": 764,
-            "name": "Brazil",
-            "shortName": "Brazil",
-            "tla": "BRA",
-            "crest": "https://crests.football-data.org/764.svg"
           },
           "playedGames": 0,
           "form": "",
@@ -1178,25 +1178,6 @@
         {
           "position": 13,
           "team": {
-            "id": 836,
-            "name": "Haiti",
-            "shortName": "Haiti",
-            "tla": "HAI",
-            "crest": "https://crests.football-data.org/haiti.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 14,
-          "team": {
             "id": 8873,
             "name": "Scotland",
             "shortName": "Scotland",
@@ -1214,7 +1195,7 @@
           "goalDifference": 0
         },
         {
-          "position": 15,
+          "position": 14,
           "team": {
             "id": 779,
             "name": "Australia",
@@ -1233,7 +1214,7 @@
           "goalDifference": 0
         },
         {
-          "position": 16,
+          "position": 15,
           "team": {
             "id": 803,
             "name": "Turkey",
@@ -1252,7 +1233,7 @@
           "goalDifference": 0
         },
         {
-          "position": 17,
+          "position": 16,
           "team": {
             "id": 759,
             "name": "Germany",
@@ -1271,7 +1252,7 @@
           "goalDifference": 0
         },
         {
-          "position": 18,
+          "position": 17,
           "team": {
             "id": 9460,
             "name": "Curaçao",
@@ -1290,7 +1271,7 @@
           "goalDifference": 0
         },
         {
-          "position": 19,
+          "position": 18,
           "team": {
             "id": 8601,
             "name": "Netherlands",
@@ -1309,7 +1290,7 @@
           "goalDifference": 0
         },
         {
-          "position": 20,
+          "position": 19,
           "team": {
             "id": 766,
             "name": "Japan",
@@ -1328,7 +1309,7 @@
           "goalDifference": 0
         },
         {
-          "position": 21,
+          "position": 20,
           "team": {
             "id": 1935,
             "name": "Ivory Coast",
@@ -1347,7 +1328,7 @@
           "goalDifference": 0
         },
         {
-          "position": 22,
+          "position": 21,
           "team": {
             "id": 791,
             "name": "Ecuador",
@@ -1366,7 +1347,7 @@
           "goalDifference": 0
         },
         {
-          "position": 23,
+          "position": 22,
           "team": {
             "id": 792,
             "name": "Sweden",
@@ -1385,7 +1366,7 @@
           "goalDifference": 0
         },
         {
-          "position": 24,
+          "position": 23,
           "team": {
             "id": 802,
             "name": "Tunisia",
@@ -1404,7 +1385,7 @@
           "goalDifference": 0
         },
         {
-          "position": 25,
+          "position": 24,
           "team": {
             "id": 760,
             "name": "Spain",
@@ -1423,7 +1404,7 @@
           "goalDifference": 0
         },
         {
-          "position": 26,
+          "position": 25,
           "team": {
             "id": 1930,
             "name": "Cape Verde Islands",
@@ -1442,7 +1423,7 @@
           "goalDifference": 0
         },
         {
-          "position": 27,
+          "position": 26,
           "team": {
             "id": 805,
             "name": "Belgium",
@@ -1461,7 +1442,7 @@
           "goalDifference": 0
         },
         {
-          "position": 28,
+          "position": 27,
           "team": {
             "id": 825,
             "name": "Egypt",
@@ -1480,7 +1461,7 @@
           "goalDifference": 0
         },
         {
-          "position": 29,
+          "position": 28,
           "team": {
             "id": 801,
             "name": "Saudi Arabia",
@@ -1499,7 +1480,7 @@
           "goalDifference": 0
         },
         {
-          "position": 30,
+          "position": 29,
           "team": {
             "id": 758,
             "name": "Uruguay",
@@ -1518,7 +1499,7 @@
           "goalDifference": 0
         },
         {
-          "position": 31,
+          "position": 30,
           "team": {
             "id": 840,
             "name": "Iran",
@@ -1537,7 +1518,7 @@
           "goalDifference": 0
         },
         {
-          "position": 32,
+          "position": 31,
           "team": {
             "id": 783,
             "name": "New Zealand",
@@ -1556,7 +1537,7 @@
           "goalDifference": 0
         },
         {
-          "position": 33,
+          "position": 32,
           "team": {
             "id": 773,
             "name": "France",
@@ -1575,7 +1556,7 @@
           "goalDifference": 0
         },
         {
-          "position": 34,
+          "position": 33,
           "team": {
             "id": 804,
             "name": "Senegal",
@@ -1594,7 +1575,7 @@
           "goalDifference": 0
         },
         {
-          "position": 35,
+          "position": 34,
           "team": {
             "id": 8062,
             "name": "Iraq",
@@ -1613,7 +1594,7 @@
           "goalDifference": 0
         },
         {
-          "position": 36,
+          "position": 35,
           "team": {
             "id": 8872,
             "name": "Norway",
@@ -1632,7 +1613,7 @@
           "goalDifference": 0
         },
         {
-          "position": 37,
+          "position": 36,
           "team": {
             "id": 762,
             "name": "Argentina",
@@ -1651,7 +1632,7 @@
           "goalDifference": 0
         },
         {
-          "position": 38,
+          "position": 37,
           "team": {
             "id": 778,
             "name": "Algeria",
@@ -1670,7 +1651,7 @@
           "goalDifference": 0
         },
         {
-          "position": 39,
+          "position": 38,
           "team": {
             "id": 816,
             "name": "Austria",
@@ -1689,7 +1670,7 @@
           "goalDifference": 0
         },
         {
-          "position": 40,
+          "position": 39,
           "team": {
             "id": 8049,
             "name": "Jordan",
@@ -1708,7 +1689,7 @@
           "goalDifference": 0
         },
         {
-          "position": 41,
+          "position": 40,
           "team": {
             "id": 765,
             "name": "Portugal",
@@ -1727,7 +1708,7 @@
           "goalDifference": 0
         },
         {
-          "position": 42,
+          "position": 41,
           "team": {
             "id": 1934,
             "name": "Congo DR",
@@ -1746,7 +1727,7 @@
           "goalDifference": 0
         },
         {
-          "position": 43,
+          "position": 42,
           "team": {
             "id": 770,
             "name": "England",
@@ -1765,7 +1746,7 @@
           "goalDifference": 0
         },
         {
-          "position": 44,
+          "position": 43,
           "team": {
             "id": 799,
             "name": "Croatia",
@@ -1784,7 +1765,7 @@
           "goalDifference": 0
         },
         {
-          "position": 45,
+          "position": 44,
           "team": {
             "id": 763,
             "name": "Ghana",
@@ -1803,7 +1784,7 @@
           "goalDifference": 0
         },
         {
-          "position": 46,
+          "position": 45,
           "team": {
             "id": 1836,
             "name": "Panama",
@@ -1822,7 +1803,7 @@
           "goalDifference": 0
         },
         {
-          "position": 47,
+          "position": 46,
           "team": {
             "id": 8070,
             "name": "Uzbekistan",
@@ -1841,7 +1822,7 @@
           "goalDifference": 0
         },
         {
-          "position": 48,
+          "position": 47,
           "team": {
             "id": 818,
             "name": "Colombia",
@@ -1858,6 +1839,25 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
+        },
+        {
+          "position": 48,
+          "team": {
+            "id": 836,
+            "name": "Haiti",
+            "shortName": "Haiti",
+            "tla": "HAI",
+            "crest": "https://crests.football-data.org/haiti.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 0,
+          "lost": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDifference": -1
         }
       ]
     },
@@ -1868,6 +1868,25 @@
       "table": [
         {
           "position": 1,
+          "team": {
+            "id": 8873,
+            "name": "Scotland",
+            "shortName": "Scotland",
+            "tla": "SCO",
+            "crest": "https://crests.football-data.org/814.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 1,
+          "draw": 0,
+          "lost": 0,
+          "points": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDifference": 1
+        },
+        {
+          "position": 2,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -1886,7 +1905,7 @@
           "goalDifference": 0
         },
         {
-          "position": 2,
+          "position": 3,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -1905,7 +1924,26 @@
           "goalDifference": 0
         },
         {
-          "position": 3,
+          "position": 4,
+          "team": {
+            "id": 815,
+            "name": "Morocco",
+            "shortName": "Morocco",
+            "tla": "MAR",
+            "crest": "https://crests.football-data.org/morocco.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "position": 5,
           "team": {
             "id": 769,
             "name": "Mexico",
@@ -1924,7 +1962,7 @@
           "goalDifference": 0
         },
         {
-          "position": 4,
+          "position": 6,
           "team": {
             "id": 772,
             "name": "South Korea",
@@ -1943,7 +1981,7 @@
           "goalDifference": 0
         },
         {
-          "position": 5,
+          "position": 7,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -1962,7 +2000,7 @@
           "goalDifference": 0
         },
         {
-          "position": 6,
+          "position": 8,
           "team": {
             "id": 771,
             "name": "United States",
@@ -1981,7 +2019,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 9,
           "team": {
             "id": 8030,
             "name": "Qatar",
@@ -2000,7 +2038,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 10,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -2019,51 +2057,13 @@
           "goalDifference": 0
         },
         {
-          "position": 9,
-          "team": {
-            "id": 815,
-            "name": "Morocco",
-            "shortName": "Morocco",
-            "tla": "MAR",
-            "crest": "https://crests.football-data.org/morocco.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 10,
+          "position": 11,
           "team": {
             "id": 836,
             "name": "Haiti",
             "shortName": "Haiti",
             "tla": "HAI",
             "crest": "https://crests.football-data.org/haiti.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 11,
-          "team": {
-            "id": 8873,
-            "name": "Scotland",
-            "shortName": "Scotland",
-            "tla": "SCO",
-            "crest": "https://crests.football-data.org/814.svg"
           },
           "playedGames": 0,
           "form": "",
