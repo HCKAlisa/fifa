@@ -2,7 +2,8 @@
   "source": "football-data.org",
   "competition": "WC",
   "season": "2026",
-  "updatedAt": "2026-06-13T04:45:33.586Z",
+  "firstMatchUtcDate": "2026-06-11T19:00:00Z",
+  "updatedAt": "2026-06-13T22:10:40.955Z",
   "counts": {
     "matches": 104,
     "teams": 48,

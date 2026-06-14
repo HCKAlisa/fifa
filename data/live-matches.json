@@ -138,7 +138,7 @@
   {
     "id": 537334,
     "utcDate": "2026-06-13T19:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_B",
@@ -157,22 +157,22 @@
       "crest": "https://crests.football-data.org/788.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": 537339,
     "utcDate": "2026-06-13T22:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
@@ -191,11 +191,11 @@
       "crest": "https://crests.football-data.org/morocco.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -342,7 +342,7 @@
   {
     "id": 537352,
     "utcDate": "2026-06-14T23:00:00Z",
-    "status": "TIMED",
+    "status": "SCHEDULED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
