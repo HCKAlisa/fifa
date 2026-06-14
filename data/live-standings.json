@@ -145,6 +145,44 @@
         {
           "position": 7,
           "team": {
+            "id": 8601,
+            "name": "Netherlands",
+            "shortName": "Netherlands",
+            "tla": "NED",
+            "crest": "https://crests.football-data.org/8601.svg"
+          },
+          "playedGames": 1,
+          "form": "D",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
+        {
+          "position": 8,
+          "team": {
+            "id": 766,
+            "name": "Japan",
+            "shortName": "Japan",
+            "tla": "JPN",
+            "crest": "https://crests.football-data.org/766.svg"
+          },
+          "playedGames": 1,
+          "form": "D",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
+        {
+          "position": 9,
+          "team": {
             "id": 828,
             "name": "Canada",
             "shortName": "Canada",
@@ -162,7 +200,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 10,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -181,7 +219,7 @@
           "goalDifference": 0
         },
         {
-          "position": 9,
+          "position": 11,
           "team": {
             "id": 8030,
             "name": "Qatar",
@@ -200,7 +238,7 @@
           "goalDifference": 0
         },
         {
-          "position": 10,
+          "position": 12,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -219,7 +257,7 @@
           "goalDifference": 0
         },
         {
-          "position": 11,
+          "position": 13,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -238,7 +276,7 @@
           "goalDifference": 0
         },
         {
-          "position": 12,
+          "position": 14,
           "team": {
             "id": 815,
             "name": "Morocco",
@@ -254,44 +292,6 @@
           "points": 1,
           "goalsFor": 1,
           "goalsAgainst": 1,
-          "goalDifference": 0
-        },
-        {
-          "position": 13,
-          "team": {
-            "id": 8601,
-            "name": "Netherlands",
-            "shortName": "Netherlands",
-            "tla": "NED",
-            "crest": "https://crests.football-data.org/8601.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 14,
-          "team": {
-            "id": 766,
-            "name": "Japan",
-            "shortName": "Japan",
-            "tla": "JPN",
-            "crest": "https://crests.football-data.org/766.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
           "goalDifference": 0
         },
         {
@@ -1045,6 +1045,25 @@
         {
           "position": 6,
           "team": {
+            "id": 8601,
+            "name": "Netherlands",
+            "shortName": "Netherlands",
+            "tla": "NED",
+            "crest": "https://crests.football-data.org/8601.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
+        {
+          "position": 7,
+          "team": {
             "id": 828,
             "name": "Canada",
             "shortName": "Canada",
@@ -1062,7 +1081,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 8030,
             "name": "Qatar",
@@ -1081,7 +1100,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 9,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -1100,7 +1119,7 @@
           "goalDifference": 0
         },
         {
-          "position": 9,
+          "position": 10,
           "team": {
             "id": 774,
             "name": "South Africa",
@@ -1119,7 +1138,7 @@
           "goalDifference": 0
         },
         {
-          "position": 10,
+          "position": 11,
           "team": {
             "id": 798,
             "name": "Czechia",
@@ -1138,7 +1157,7 @@
           "goalDifference": 0
         },
         {
-          "position": 11,
+          "position": 12,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -1157,7 +1176,7 @@
           "goalDifference": 0
         },
         {
-          "position": 12,
+          "position": 13,
           "team": {
             "id": 761,
             "name": "Paraguay",
@@ -1176,7 +1195,7 @@
           "goalDifference": 0
         },
         {
-          "position": 13,
+          "position": 14,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -1195,7 +1214,7 @@
           "goalDifference": 0
         },
         {
-          "position": 14,
+          "position": 15,
           "team": {
             "id": 815,
             "name": "Morocco",
@@ -1214,7 +1233,7 @@
           "goalDifference": 0
         },
         {
-          "position": 15,
+          "position": 16,
           "team": {
             "id": 8873,
             "name": "Scotland",
@@ -1233,7 +1252,7 @@
           "goalDifference": 0
         },
         {
-          "position": 16,
+          "position": 17,
           "team": {
             "id": 803,
             "name": "Turkey",
@@ -1252,32 +1271,13 @@
           "goalDifference": 0
         },
         {
-          "position": 17,
+          "position": 18,
           "team": {
             "id": 9460,
             "name": "Curaçao",
             "shortName": "Curaçao",
             "tla": "CUW",
             "crest": "https://crests.football-data.org/curacao.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 18,
-          "team": {
-            "id": 8601,
-            "name": "Netherlands",
-            "shortName": "Netherlands",
-            "tla": "NED",
-            "crest": "https://crests.football-data.org/8601.svg"
           },
           "playedGames": 0,
           "form": "",
@@ -1888,6 +1888,25 @@
         {
           "position": 2,
           "team": {
+            "id": 766,
+            "name": "Japan",
+            "shortName": "Japan",
+            "tla": "JPN",
+            "crest": "https://crests.football-data.org/766.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
+        {
+          "position": 3,
+          "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
             "shortName": "Bosnia-H.",
@@ -1905,7 +1924,7 @@
           "goalDifference": 0
         },
         {
-          "position": 3,
+          "position": 4,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -1924,7 +1943,7 @@
           "goalDifference": 0
         },
         {
-          "position": 4,
+          "position": 5,
           "team": {
             "id": 815,
             "name": "Morocco",
@@ -1943,7 +1962,7 @@
           "goalDifference": 0
         },
         {
-          "position": 5,
+          "position": 6,
           "team": {
             "id": 769,
             "name": "Mexico",
@@ -1962,7 +1981,7 @@
           "goalDifference": 0
         },
         {
-          "position": 6,
+          "position": 7,
           "team": {
             "id": 772,
             "name": "South Korea",
@@ -1981,7 +2000,7 @@
           "goalDifference": 0
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -2000,7 +2019,7 @@
           "goalDifference": 0
         },
         {
-          "position": 8,
+          "position": 9,
           "team": {
             "id": 771,
             "name": "United States",
@@ -2019,7 +2038,7 @@
           "goalDifference": 0
         },
         {
-          "position": 9,
+          "position": 10,
           "team": {
             "id": 8030,
             "name": "Qatar",
@@ -2038,7 +2057,7 @@
           "goalDifference": 0
         },
         {
-          "position": 10,
+          "position": 11,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -2057,7 +2076,7 @@
           "goalDifference": 0
         },
         {
-          "position": 11,
+          "position": 12,
           "team": {
             "id": 836,
             "name": "Haiti",
@@ -2076,7 +2095,7 @@
           "goalDifference": 0
         },
         {
-          "position": 12,
+          "position": 13,
           "team": {
             "id": 779,
             "name": "Australia",
@@ -2095,7 +2114,7 @@
           "goalDifference": 0
         },
         {
-          "position": 13,
+          "position": 14,
           "team": {
             "id": 759,
             "name": "Germany",
@@ -2114,32 +2133,13 @@
           "goalDifference": 0
         },
         {
-          "position": 14,
+          "position": 15,
           "team": {
             "id": 8601,
             "name": "Netherlands",
             "shortName": "Netherlands",
             "tla": "NED",
             "crest": "https://crests.football-data.org/8601.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 15,
-          "team": {
-            "id": 766,
-            "name": "Japan",
-            "shortName": "Japan",
-            "tla": "JPN",
-            "crest": "https://crests.football-data.org/766.svg"
           },
           "playedGames": 0,
           "form": "",
