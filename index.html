@@ -16,7 +16,7 @@
   </header>
 
   <main>
-    <section class="status-bar" id="liveStatus">Loading data status...</section>
+    <section class="status-bar" id="liveStatus">Loading update status...</section>
 
     <nav class="view-tabs" aria-label="Views">
       <button class="view-tab active" data-view="teams">Teams / 球隊</button>
@@ -54,7 +54,7 @@
     <section id="standingsView" class="view">
       <section class="panel">
         <h2>Standings / 積分榜</h2>
-        <p class="filter-note">Updated by GitHub Actions from football-data.org when configured. If unavailable, this view shows a setup message.</p>
+        <p class="filter-note">Snapshot data from football-data.org via GitHub Actions. Delays are possible, so use official sources for real-time match status.</p>
         <div class="standings-legend">
           <span><strong>Pts</strong>: Points</span>
           <span><strong>MP</strong>: Matches played</span>
@@ -72,7 +72,7 @@
     <section id="fixturesView" class="view">
       <section class="panel">
         <h2>Fixtures & results / 賽程及賽果</h2>
-        <p class="filter-note">Use the same search/group/team filters to narrow fixtures. Kickoff times are shown in your local timezone.</p>
+        <p class="filter-note">Use the same search/group/team filters to narrow fixtures. Kickoff times are shown in your local timezone, and match statuses may lag behind real time.</p>
         <div class="fixture-grouping-controls" aria-label="Fixture grouping mode">
           <button class="fixture-grouping-btn active" id="fixtureGroupingDate" type="button" data-mode="date-group">Date then group</button>
           <button class="fixture-grouping-btn" id="fixtureGroupingGroup" type="button" data-mode="group-date">Group then date</button>

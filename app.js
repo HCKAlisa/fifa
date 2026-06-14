@@ -345,7 +345,7 @@ function teamGroupFromApi(team){
 }
 
 function statusText(status){
-  const map = { SCHEDULED:'Scheduled', TIMED:'Scheduled', IN_PLAY:'Live', PAUSED:'Paused', FINISHED:'Finished', POSTPONED:'Postponed', SUSPENDED:'Suspended', CANCELLED:'Cancelled' };
+  const map = { SCHEDULED:'Scheduled', TIMED:'Scheduled', IN_PLAY:'Reported started', PAUSED:'Paused', FINISHED:'Finished', POSTPONED:'Postponed', SUSPENDED:'Suspended', CANCELLED:'Cancelled' };
   return map[status] || status || 'TBD';
 }
 
@@ -1123,7 +1123,7 @@ function renderStatus(){
   const rosterUpdated = live.officialRosters?.updatedAt ? formatDateTime(live.officialRosters.updatedAt) : 'Not imported yet';
   const teamMetadataUpdated = live.teamMetadata?.updatedAt ? formatDateTime(live.teamMetadata.updatedAt) : 'Not imported yet';
   const rosterPlayers = TEAMS.reduce((sum,t)=>sum+(t.players?.length || 0),0);
-  liveStatus.innerHTML = `<strong>Fixtures/standings:</strong> ${escapeHtml(updated)} <span class="muted">Source: ${escapeHtml(source)}</span><br><strong>Official rosters:</strong> ${escapeHtml(rosterUpdated)} <span class="muted">${rosterPlayers} players loaded</span><br><strong>Team metadata:</strong> ${escapeHtml(teamMetadataUpdated)}`;
+  liveStatus.innerHTML = `<strong>Fixtures/standings snapshot:</strong> ${escapeHtml(updated)} <span class="muted">Source: ${escapeHtml(source)} • GitHub Actions updates may be delayed</span><br><strong>Official rosters:</strong> ${escapeHtml(rosterUpdated)} <span class="muted">${rosterPlayers} players loaded</span><br><strong>Team metadata:</strong> ${escapeHtml(teamMetadataUpdated)}`;
 }
 
 function syncTeamsViewControls(){

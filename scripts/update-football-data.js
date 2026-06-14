@@ -11,7 +11,11 @@ const SEASON = process.env.FOOTBALL_DATA_SEASON || '2026';
 const BASE_URL = 'https://api.football-data.org/v4';
 const OUT_DIR = path.join(process.cwd(), 'data');
 const SKIP_BEFORE_FIRST_MATCH = /^(1|true|yes)$/i.test(process.env.SKIP_BEFORE_FIRST_MATCH || '');
-const MATCH_UPDATE_OFFSET_HOURS = Number.parseInt(process.env.MATCH_UPDATE_OFFSET_HOURS || '0', 10);
+const MATCH_UPDATE_OFFSET_HOURS = String(process.env.MATCH_UPDATE_OFFSET_HOURS || '')
+  .split(',')
+  .map(value => Number.parseFloat(value.trim()))
+  .filter(value => Number.isFinite(value) && value >= 0)
+  .sort((a, b) => a - b);
 const MATCH_UPDATE_WINDOW_MINUTES = Number.parseInt(process.env.MATCH_UPDATE_WINDOW_MINUTES || '15', 10);
 
 if (!TOKEN) {
@@ -58,21 +62,28 @@ function getFirstMatchUtcDate(matches) {
 }
 
 function getScheduledUpdateMatch(matches, nowMs, lastRefreshMs) {
-  if (!Number.isFinite(MATCH_UPDATE_OFFSET_HOURS) || MATCH_UPDATE_OFFSET_HOURS <= 0) return null;
+  if (!MATCH_UPDATE_OFFSET_HOURS.length) return null;
 
-  const offsetMs = MATCH_UPDATE_OFFSET_HOURS * 60 * 60 * 1000;
   const lastEligibleRefreshMs = Number.isFinite(lastRefreshMs) ? lastRefreshMs : 0;
 
   return matches.reduce((selected, match) => {
     const kickoffMs = Date.parse(match?.utcDate || '');
     if (!Number.isFinite(kickoffMs)) return selected;
-    const targetMs = kickoffMs + offsetMs;
-    if (targetMs > nowMs || targetMs <= lastEligibleRefreshMs) return selected;
-    if (!selected || targetMs > selected.targetMs) {
-      return { match, targetMs };
+
+    for (const offsetHours of MATCH_UPDATE_OFFSET_HOURS) {
+      const targetMs = kickoffMs + (offsetHours * 60 * 60 * 1000);
+      if (targetMs > nowMs || targetMs <= lastEligibleRefreshMs) continue;
+      if (!selected || targetMs > selected.targetMs) {
+        selected = { match, targetMs, offsetHours };
+      }
     }
+
     return selected;
   }, null);
+}
+
+function formatOffsetHours(offsetHours) {
+  return Number.isInteger(offsetHours) ? String(offsetHours) : String(offsetHours).replace(/\.0+$/, '');
 }
 
 async function main() {
@@ -85,6 +96,7 @@ async function main() {
   const previousMeta = await readJson('live-meta.json');
   const previousUpdatedAt = previousMeta?.updatedAt || '';
   const previousUpdatedMs = Date.parse(previousUpdatedAt);
+  const offsetHoursLabel = MATCH_UPDATE_OFFSET_HOURS.map(formatOffsetHours).join(', ');
 
   if (SKIP_BEFORE_FIRST_MATCH && firstMatchUtcDate && nowMs < Date.parse(firstMatchUtcDate)) {
     console.log(`Skipping update because the first match has not started yet. First kickoff: ${firstMatchUtcDate}`);
@@ -92,13 +104,13 @@ async function main() {
   }
 
   const scheduledUpdate = getScheduledUpdateMatch(matches, nowMs, previousUpdatedMs);
-  if (MATCH_UPDATE_OFFSET_HOURS > 0 && !scheduledUpdate) {
+  if (MATCH_UPDATE_OFFSET_HOURS.length > 0 && !scheduledUpdate) {
     const lastRefreshLabel = Number.isFinite(previousUpdatedMs) ? previousUpdatedAt : 'never';
-    console.log(`Skipping update because no match has newly crossed the ${MATCH_UPDATE_OFFSET_HOURS}-hour refresh threshold since the last refresh (${lastRefreshLabel}).`);
+    console.log(`Skipping update because no match has newly crossed any refresh threshold (${offsetHoursLabel} hours after kickoff) since the last refresh (${lastRefreshLabel}).`);
     return;
   }
   if (scheduledUpdate) {
-    console.log(`Refreshing data for match ${scheduledUpdate.match.id} after it crossed the ${MATCH_UPDATE_OFFSET_HOURS}-hour kickoff threshold (${scheduledUpdate.match.utcDate}).`);
+    console.log(`Refreshing data for match ${scheduledUpdate.match.id} after it crossed the ${formatOffsetHours(scheduledUpdate.offsetHours)}-hour kickoff threshold (${scheduledUpdate.match.utcDate}).`);
     if (Number.isFinite(previousUpdatedMs) && Number.isFinite(MATCH_UPDATE_WINDOW_MINUTES) && MATCH_UPDATE_WINDOW_MINUTES > 0) {
       const delayMinutes = Math.round((nowMs - scheduledUpdate.targetMs) / 60000);
       if (delayMinutes > MATCH_UPDATE_WINDOW_MINUTES) {
