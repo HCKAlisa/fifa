@@ -410,7 +410,7 @@
   {
     "id": 537369,
     "utcDate": "2026-06-15T16:00:00Z",
-    "status": "PAUSED",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -444,7 +444,7 @@
   {
     "id": 537363,
     "utcDate": "2026-06-15T19:00:00Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -463,15 +463,15 @@
       "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
