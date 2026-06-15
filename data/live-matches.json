@@ -342,7 +342,7 @@
   {
     "id": 537352,
     "utcDate": "2026-06-14T23:00:00Z",
-    "status": "FINISHED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -376,7 +376,7 @@
   {
     "id": 537358,
     "utcDate": "2026-06-15T02:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -398,12 +398,12 @@
       "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 2,
-        "away": 0
+        "home": 5,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       }
     }
   },
