@@ -187,7 +187,7 @@ footer {
 
 .controls {
     display: grid;
-    grid-template-columns: minmax(240px, 2fr) repeat(5, minmax(170px, 1fr)) auto;
+    grid-template-columns: minmax(240px, 2fr) repeat(6, minmax(170px, 1fr)) auto;
     gap: 12px;
     align-items: start;
     padding-top: 24px;
@@ -1152,6 +1152,11 @@ tbody tr:last-child td {
     line-height: 1.35;
 }
 
+.fixture-card-tags-favorite {
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
 .fixture-stage {
     margin: 0 0 28px;
     border: 1px solid var(--line);
@@ -1262,7 +1267,8 @@ tbody tr:last-child td {
 }
 
 .fixture-status,
-.fixture-placeholder-badge {
+.fixture-placeholder-badge,
+.fixture-broadcast-badge {
     display: inline-flex;
     align-items: center;
     border-radius: 999px;
@@ -1286,6 +1292,11 @@ tbody tr:last-child td {
 .fixture-status.scheduled {
     background: #e0f2fe;
     color: #075985
+}
+
+.fixture-broadcast-badge {
+    background: #fef3c7;
+    color: #92400e;
 }
 
 .fixture-status.other,
@@ -1576,6 +1587,10 @@ footer {
 
     .favorite-fixture-card .fixture-team.favorite-fixture-team-highlight {
         padding: 10px;
+    }
+
+    .fixture-card-tags-favorite {
+        justify-content: flex-start;
     }
 
     .player-view-toggle {
