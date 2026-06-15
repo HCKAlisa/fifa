@@ -73,6 +73,18 @@
       <section class="panel">
         <h2>Fixtures & results / 賽程及賽果</h2>
         <p class="filter-note">Use the same search/group/team filters to narrow fixtures. Kickoff times are shown in your local timezone, and match statuses may lag behind real time.</p>
+        <section class="favorite-fixtures-panel" aria-labelledby="favoriteFixturesTitle">
+          <div class="favorite-fixtures-head">
+            <div>
+              <h3 id="favoriteFixturesTitle">Favorite teams / 最愛球隊</h3>
+              <p class="filter-note">Pick multiple teams to pin their next matches here. Your picks are saved in this browser and stay separate from the main page filters.</p>
+            </div>
+            <div class="favorite-fixtures-picker">
+              <select id="favoriteTeamFilter" class="multi-dropdown-source" data-placeholder="Pick favorite teams / 選擇最愛球隊" multiple title="Choose favorite teams to pin upcoming fixtures"></select>
+            </div>
+          </div>
+          <div id="favoriteFixtures"></div>
+        </section>
         <div class="fixture-grouping-controls" aria-label="Fixture grouping mode">
           <button class="fixture-grouping-btn active" id="fixtureGroupingDate" type="button" data-mode="date-group">Date then group</button>
           <button class="fixture-grouping-btn" id="fixtureGroupingGroup" type="button" data-mode="group-date">Group then date</button>
