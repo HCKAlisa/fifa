@@ -1,8 +1,9 @@
 const TEAMS = Array.isArray(window.TEAMS) ? window.TEAMS : [];
 const groups = [...new Set(TEAMS.map(t => t.group))].sort();
 const PLAYER_VIEW_STORAGE_KEY = 'wc2026-player-view';
+const FAVORITE_TEAMS_STORAGE_KEY = 'wc2026-favorite-teams';
 const MOBILE_PLAYER_VIEW_BREAKPOINT = 760;
-const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], search:'', selected:null, fixtureGrouping:'date-group', playerView:readStoredPlayerView(), teamSort:'group-alpha' };
+const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], favoriteTeams:readStoredFavoriteTeams(), search:'', selected:null, fixtureGrouping:'date-group', playerView:readStoredPlayerView(), teamSort:'group-alpha' };
 const live = { matches:[], standings:null, meta:null, teamsApi:[], officialRosters:null, teamMetadata:null };
 const originalManualPlayers = new Map(TEAMS.map(t => [t.code, (t.players || []).filter(p => p.confidence !== 'Example only')]));
 
@@ -16,6 +17,7 @@ const teamModal = document.querySelector('#teamModal');
 const teamModalClose = document.querySelector('#teamModalClose');
 const teamSort = document.querySelector('#teamSort');
 const teamFilter = document.querySelector('#teamFilter');
+const favoriteTeamFilter = document.querySelector('#favoriteTeamFilter');
 const positionFilter = document.querySelector('#positionFilter');
 const stageFilter = document.querySelector('#stageFilter');
 const liveStatus = document.querySelector('#liveStatus');
@@ -39,6 +41,25 @@ function readStoredPlayerView(){
     return isMobileViewport() ? 'list' : 'grid';
   }catch(err){
     return isMobileViewport() ? 'list' : 'grid';
+  }
+}
+
+function readStoredFavoriteTeams(){
+  try{
+    const storedValue = JSON.parse(localStorage.getItem(FAVORITE_TEAMS_STORAGE_KEY) || '[]');
+    if(!Array.isArray(storedValue)) return [];
+    const validCodes = new Set(TEAMS.map(team => team.code));
+    return storedValue.filter(code => validCodes.has(code));
+  }catch(err){
+    return [];
+  }
+}
+
+function persistFavoriteTeams(){
+  try{
+    localStorage.setItem(FAVORITE_TEAMS_STORAGE_KEY, JSON.stringify(state.favoriteTeams));
+  }catch(err){
+    // Ignore storage failures and keep the in-memory selection.
   }
 }
 
@@ -101,14 +122,57 @@ function matchesMulti(values, candidate){
   return !values.length || values.includes(candidate);
 }
 
+function teamFlagMarkup(teamOrCode, className=''){
+  const team = typeof teamOrCode === 'string'
+    ? teamByCode[teamOrCode]
+    : (teamOrCode?.code ? teamByCode[teamOrCode.code] || teamOrCode : teamOrCode);
+  const code = team?.code || (typeof teamOrCode === 'string' ? teamOrCode : '');
+  const label = team?.en || team?.name || team?.shortName || code || 'Team';
+  const classSuffix = className ? ` ${className}` : '';
+  if(code === 'ENG'){
+    return `<span class="flag-icon flag-icon-england${classSuffix}" role="img" aria-label="${escapeHtml(label)} flag"></span>`;
+  }
+  if(code === 'SCO'){
+    return `<span class="flag-icon flag-icon-scotland${classSuffix}" role="img" aria-label="${escapeHtml(label)} flag"></span>`;
+  }
+  return `<span class="flag-icon-text${classSuffix}" role="img" aria-label="${escapeHtml(label)} flag">${escapeHtml(team?.flag || '?')}</span>`;
+}
+
+function teamLabelMarkup(teamOrCode, label, options={}){
+  const { flagClass='multi-dropdown-flag', textClass='multi-dropdown-option-text' } = options;
+  return `
+    <span class="multi-dropdown-option-label">
+      ${teamFlagMarkup(teamOrCode, flagClass)}
+      <span class="${escapeHtml(textClass)}">${escapeHtml(label)}</span>
+    </span>
+  `;
+}
+
 function multiDropdownSummary(select){
   const selected = getMultiSelectValues(select);
-  const labels = [...select.options]
-    .filter(option => selected.includes(option.value))
-    .map(option => option.textContent.trim());
-  if(!labels.length) return select.dataset.placeholder || 'All';
-  if(labels.length <= 2) return labels.join(', ');
-  return `${labels.slice(0, 2).join(', ')} +${labels.length - 2}`;
+  const selectedOptions = [...select.options].filter(option => selected.includes(option.value));
+  if(!selectedOptions.length) return `<span class="multi-dropdown-summary-text">${escapeHtml(select.dataset.placeholder || 'All')}</span>`;
+  if(teamByCode[selectedOptions[0]?.value]){
+    const visible = selectedOptions.slice(0, 2);
+    const extraCount = selectedOptions.length - visible.length;
+    return `
+      <span class="multi-dropdown-summary multi-dropdown-summary-teams">
+        ${visible.map(option => {
+          const team = teamByCode[option.value];
+          return `
+            <span class="multi-dropdown-summary-team">
+              ${teamFlagMarkup(team, 'multi-dropdown-flag')}
+              <span class="multi-dropdown-summary-text">${escapeHtml(option.textContent.trim())}</span>
+            </span>
+          `;
+        }).join('')}
+        ${extraCount > 0 ? `<span class="multi-dropdown-summary-more">+${extraCount}</span>` : ''}
+      </span>
+    `;
+  }
+  const labels = selectedOptions.map(option => option.textContent.trim());
+  if(labels.length <= 2) return `<span class="multi-dropdown-summary-text">${escapeHtml(labels.join(', '))}</span>`;
+  return `<span class="multi-dropdown-summary-text">${escapeHtml(`${labels.slice(0, 2).join(', ')} +${labels.length - 2}`)}</span>`;
 }
 
 function ensureMultiDropdown(select){
@@ -132,7 +196,7 @@ function refreshMultiDropdown(select){
   const trigger = wrapper.querySelector('.multi-dropdown-trigger');
   const menu = wrapper.querySelector('.multi-dropdown-menu');
   const selected = new Set(getMultiSelectValues(select));
-  trigger.textContent = multiDropdownSummary(select);
+  trigger.innerHTML = multiDropdownSummary(select);
   trigger.setAttribute('aria-expanded', wrapper.classList.contains('open') ? 'true' : 'false');
   menu.innerHTML = `
     <label class="multi-dropdown-option multi-dropdown-option-all">
@@ -142,7 +206,9 @@ function refreshMultiDropdown(select){
     ${[...select.options].map(option => `
       <label class="multi-dropdown-option">
         <input type="checkbox" value="${escapeHtml(option.value)}" ${selected.has(option.value) ? 'checked' : ''} />
-        <span>${escapeHtml(option.textContent.trim())}</span>
+        ${teamByCode[option.value]
+          ? teamLabelMarkup(teamByCode[option.value], option.textContent.trim())
+          : `<span>${escapeHtml(option.textContent.trim())}</span>`}
       </label>
     `).join('')}
   `;
@@ -384,14 +450,13 @@ function isTodayFixtureDate(value){
 function fixtureTeamMarkup(team){
   const local = getLocalTeam(team);
   const hasRealTeam = Boolean(local?.code || team?.tla || team?.name || team?.shortName);
-  const flag = hasRealTeam ? (local?.flag || '') : '';
   const en = hasRealTeam ? (local?.en || team?.shortName || team?.name || 'TBD') : 'TBD';
   const zh = hasRealTeam ? (local?.zh || '') : '待定';
   const code = hasRealTeam ? (local?.code || team?.tla || '') : 'TBD';
   const flagClass = hasRealTeam ? 'fixture-team-flag' : 'fixture-team-flag fixture-team-flag-placeholder';
   return `
     <div class="fixture-team-head">
-      <div class="${flagClass}">${escapeHtml(flag || '?')}</div>
+      <div class="${flagClass}">${teamFlagMarkup(local || code, 'flag-icon-inline')}</div>
       <div class="fixture-team-text">
         <div class="fixture-team-en">${escapeHtml(en)}</div>
         <div class="fixture-team-zh">${escapeHtml(zh)}</div>
@@ -427,18 +492,26 @@ function fixtureTeamPlaceholderMarkup(){
 function fillFilters(){
   groupFilter.innerHTML = '';
   teamFilter.innerHTML = '';
+  if(favoriteTeamFilter) favoriteTeamFilter.innerHTML = '';
   positionFilter.innerHTML = '';
   groups.forEach(g => {
     const opt = document.createElement('option'); opt.value = g; opt.textContent = `Group ${g} / ${g} 組`; groupFilter.appendChild(opt);
   });
   TEAMS.slice().sort((a,b)=> a.en.localeCompare(b.en)).forEach(t => {
     const opt = document.createElement('option'); opt.value = t.code; opt.textContent = `${t.en} / ${t.zh}`; teamFilter.appendChild(opt);
+    if(favoriteTeamFilter){
+      const favoriteOpt = document.createElement('option');
+      favoriteOpt.value = t.code;
+      favoriteOpt.textContent = `${t.en} / ${t.zh}`;
+      favoriteTeamFilter.appendChild(favoriteOpt);
+    }
   });
   uniquePlayerValues('position').forEach(pos => {
     const opt = document.createElement('option'); opt.value = pos; opt.textContent = pos; positionFilter.appendChild(opt);
   });
   setMultiSelectValues(groupFilter, state.groups);
   setMultiSelectValues(teamFilter, state.teams);
+  if(favoriteTeamFilter) setMultiSelectValues(favoriteTeamFilter, state.favoriteTeams);
   setMultiSelectValues(positionFilter, state.positions);
   refreshAllMultiDropdowns();
 }
@@ -572,6 +645,107 @@ function renderFixtureCard(match){
   `;
 }
 
+function fixtureTeamsForMatch(match){
+  const homeLocal = getLocalTeam(match?.homeTeam);
+  const awayLocal = getLocalTeam(match?.awayTeam);
+  return [
+    homeLocal?.code || match?.homeTeam?.tla || '',
+    awayLocal?.code || match?.awayTeam?.tla || ''
+  ].filter(Boolean);
+}
+
+function favoriteFixtureMatches(match){
+  if(!state.favoriteTeams.length) return false;
+  const teamCodes = fixtureTeamsForMatch(match);
+  return teamCodes.some(code => state.favoriteTeams.includes(code));
+}
+
+function isUpcomingFixture(match){
+  const status = String(match?.status || '').toUpperCase();
+  if(['IN_PLAY', 'PAUSED', 'TIMED', 'SCHEDULED', 'POSTPONED', 'SUSPENDED'].includes(status)) return true;
+  if(['FINISHED', 'CANCELLED'].includes(status)) return false;
+  const kickoff = new Date(match?.utcDate || '');
+  if(Number.isNaN(kickoff.getTime())) return false;
+  return kickoff.getTime() >= Date.now() - (4 * 60 * 60 * 1000);
+}
+
+function favoriteFixtureTeams(match){
+  return fixtureTeamsForMatch(match)
+    .filter(code => state.favoriteTeams.includes(code))
+    .map(code => teamByCode[code])
+    .filter(Boolean);
+}
+
+function fixtureTeamCode(team){
+  const local = getLocalTeam(team);
+  return local?.code || team?.tla || '';
+}
+
+function updateFavoriteTeamSelection(nextFavorites){
+  state.favoriteTeams = [...new Set((nextFavorites || []).filter(code => teamByCode[code]))];
+  if(favoriteTeamFilter) setMultiSelectValues(favoriteTeamFilter, state.favoriteTeams);
+  persistFavoriteTeams();
+  renderFavoriteFixtures();
+}
+
+function renderFavoriteFixtures(){
+  const container = document.querySelector('#favoriteFixtures');
+  if(!container) return;
+  if(!state.favoriteTeams.length){
+    container.innerHTML = '<div class="empty-roster">Choose one or more favorite teams to pin their next fixtures here. On mobile, tap the picker above and build your list team by team.</div>';
+    return;
+  }
+  if(!live.matches.length){
+    container.innerHTML = '<div class="empty-roster">Fixture data has not loaded yet, so favorite matches cannot be shown.</div>';
+    return;
+  }
+
+  const matches = dedupeFixtures(live.matches)
+    .filter(isUpcomingFixture)
+    .filter(favoriteFixtureMatches)
+    .sort((a, b) => new Date(a.utcDate || 0) - new Date(b.utcDate || 0))
+    .slice(0, 12);
+
+  if(!matches.length){
+    container.innerHTML = '<div class="empty-roster">No upcoming matches found yet for the selected favorite teams.</div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="favorite-fixture-hint">Swipe sideways on mobile to browse more pinned matches.</div>
+    <div class="favorite-fixture-row" aria-label="Upcoming matches for favorite teams">
+      ${matches.map(match => {
+        const placeholder = !hasRealFixtureTeams(match) || (match.stage !== 'GROUP_STAGE' && !fixtureHasLockedTeams(match));
+        const stageLabel = fixtureStageLabel(match);
+        const groupLabel = fixtureGroupLabel(match);
+        const contextLabel = groupLabel && groupLabel !== stageLabel ? `${stageLabel} · ${groupLabel}` : stageLabel;
+        const homeFavorite = state.favoriteTeams.includes(fixtureTeamCode(match.homeTeam));
+        const awayFavorite = state.favoriteTeams.includes(fixtureTeamCode(match.awayTeam));
+        return `
+          <article class="fixture-card favorite-fixture-card ${placeholder ? 'fixture-card-placeholder' : ''}">
+            <div class="favorite-fixture-top">
+              <div>
+                <div class="fixture-kickoff">${escapeHtml(formatFixtureKickoff(match.utcDate))}</div>
+                <div class="favorite-fixture-subtitle">${escapeHtml(contextLabel)}</div>
+              </div>
+              <span class="fixture-status ${escapeHtml(fixtureStatusClass(match.status))}">${escapeHtml(statusText(match.status))}</span>
+            </div>
+            <div class="fixture-teams">
+              <div class="fixture-team ${homeFavorite ? 'favorite-fixture-team-highlight' : ''}">
+                ${placeholder ? fixtureTeamPlaceholderMarkup() : fixtureTeamMarkup(match.homeTeam)}
+              </div>
+              <div class="fixture-score">${escapeHtml(scoreText(match))}</div>
+              <div class="fixture-team fixture-team-away ${awayFavorite ? 'favorite-fixture-team-highlight' : ''}">
+                ${placeholder ? fixtureTeamPlaceholderMarkup() : fixtureTeamMarkup(match.awayTeam)}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
 function renderFixtureDateSection(label, matches){
   const isToday = matches.some(match => isTodayFixtureDate(match.utcDate));
   return `
@@ -635,7 +809,7 @@ function renderGrid(){
 
   const cardMarkup = t => `
     <article class="team-card" onclick="selectTeam('${escapeHtml(t.code)}')">
-      <div class="team-top"><div class="flag">${escapeHtml(t.flag)}</div><div class="group">Group ${escapeHtml(t.group)}</div></div>
+      <div class="team-top"><div class="flag">${teamFlagMarkup(t, 'flag-icon-inline')}</div><div class="group">Group ${escapeHtml(t.group)}</div></div>
       <h3>${escapeHtml(t.en)}</h3>
       <div class="zh">${escapeHtml(t.zh)}</div>
       <div class="meta">
@@ -927,7 +1101,7 @@ function renderDetails(){
   `).join('');
   details.innerHTML = `
     <div class="team-detail-head">
-      <div class="flag">${escapeHtml(t.flag)}</div>
+      <div class="flag">${teamFlagMarkup(t, 'flag-icon-inline')}</div>
       <div>
         <h2>${escapeHtml(t.en)} / <span class="zh">${escapeHtml(t.zh)}</span></h2>
         <span class="badge">Group ${escapeHtml(t.group)}</span><span class="badge">${escapeHtml(t.code)}</span><span class="badge">Rank: ${escapeHtml(formatRanking(t) || 'TBD')}</span><span class="badge">Overall: ${escapeHtml(formatOverallTeamRank(overallRankByCode.get(t.code), TEAMS.length))}</span><span class="badge">Coach: ${escapeHtml(formatCoach(t) || 'TBD')}</span>
@@ -1169,7 +1343,7 @@ function setView(view){
 }
 
 function render(){
-  renderTabs(); renderGrid(); renderDetails(); renderAllPlayers(); renderStandings(); renderFixtures(); renderStatus();
+  renderTabs(); renderGrid(); renderDetails(); renderAllPlayers(); renderStandings(); renderFavoriteFixtures(); renderFixtures(); renderStatus();
   updatePlayerViewToggleButtons();
 }
 
@@ -1224,6 +1398,9 @@ teamSort?.addEventListener('change', e => {
 });
 groupFilter.addEventListener('change', e => { state.groups = getMultiSelectValues(e.target); render(); });
 teamFilter.addEventListener('change', e => { state.teams = getMultiSelectValues(e.target); render(); });
+favoriteTeamFilter?.addEventListener('change', e => {
+  updateFavoriteTeamSelection(getMultiSelectValues(e.target));
+});
 positionFilter.addEventListener('change', e => { state.positions = getMultiSelectValues(e.target); render(); });
 stageFilter.addEventListener('change', e => { state.stages = getMultiSelectValues(e.target); renderFixtures(); });
 document.addEventListener('click', event => {
