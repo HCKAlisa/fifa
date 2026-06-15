@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows:
+      - Update World Cup Data
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
@@ -17,6 +22,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -24,6 +30,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: refs/heads/main
 
       - name: Setup Node
         uses: actions/setup-node@v4
