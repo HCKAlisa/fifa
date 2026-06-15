@@ -36,6 +36,10 @@
       <select id="teamFilter" class="multi-dropdown-source" data-hide-on-teams="true" data-placeholder="All teams / 全部球隊" multiple title="Use Ctrl/Cmd-click to select multiple teams"><option value="all">All teams / 全部球隊</option></select>
       <select id="positionFilter" class="multi-dropdown-source" data-hide-on-teams="true" data-placeholder="All positions / 全部位置" multiple title="Use Ctrl/Cmd-click to select multiple positions"><option value="all">All positions / 全部位置</option></select>
       <select id="stageFilter" class="multi-dropdown-source" data-placeholder="All stages" hidden multiple title="Use Ctrl/Cmd-click to select multiple stages"><option value="all">All stages</option></select>
+      <select id="broadcastFilter" hidden title="Filter fixtures by broadcast availability">
+        <option value="all">All broadcasts / 全部賽事</option>
+        <option value="viutv">ViuTV HK free only / 僅限 ViuTV 免費直播</option>
+      </select>
       <button id="resetBtn" data-hide-on-teams="true">Reset / 重設</button>
     </section>
 
@@ -72,7 +76,7 @@
     <section id="fixturesView" class="view">
       <section class="panel">
         <h2>Fixtures & results / 賽程及賽果</h2>
-        <p class="filter-note">Use the same search/group/team filters to narrow fixtures. Kickoff times are shown in your local timezone, and match statuses may lag behind real time.</p>
+        <p class="filter-note">Use the same search/group/team filters plus the ViuTV toggle to narrow fixtures. Kickoff times are shown in your local timezone, while the ViuTV badge marks the Hong Kong free-to-air schedule.</p>
         <section class="favorite-fixtures-panel" aria-labelledby="favoriteFixturesTitle">
           <div class="favorite-fixtures-head">
             <div>

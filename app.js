@@ -3,7 +3,7 @@ const groups = [...new Set(TEAMS.map(t => t.group))].sort();
 const PLAYER_VIEW_STORAGE_KEY = 'wc2026-player-view';
 const FAVORITE_TEAMS_STORAGE_KEY = 'wc2026-favorite-teams';
 const MOBILE_PLAYER_VIEW_BREAKPOINT = 760;
-const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], favoriteTeams:readStoredFavoriteTeams(), search:'', selected:null, fixtureGrouping:'date-group', playerView:readStoredPlayerView(), teamSort:'group-alpha' };
+const state = { view:'teams', groups:[], teams:[], positions:[], stages:[], favoriteTeams:readStoredFavoriteTeams(), search:'', selected:null, fixtureGrouping:'date-group', fixtureBroadcast:'all', playerView:readStoredPlayerView(), teamSort:'group-alpha' };
 const live = { matches:[], standings:null, meta:null, teamsApi:[], officialRosters:null, teamMetadata:null };
 const originalManualPlayers = new Map(TEAMS.map(t => [t.code, (t.players || []).filter(p => p.confidence !== 'Example only')]));
 
@@ -20,6 +20,7 @@ const teamFilter = document.querySelector('#teamFilter');
 const favoriteTeamFilter = document.querySelector('#favoriteTeamFilter');
 const positionFilter = document.querySelector('#positionFilter');
 const stageFilter = document.querySelector('#stageFilter');
+const broadcastFilter = document.querySelector('#broadcastFilter');
 const liveStatus = document.querySelector('#liveStatus');
 const fixtureGroupingButtons = [...document.querySelectorAll('.fixture-grouping-btn')];
 const teamHiddenControls = [...document.querySelectorAll('[data-hide-on-teams="true"]')];
@@ -27,6 +28,35 @@ const teamVisibleControls = [...document.querySelectorAll('[data-show-on-teams="
 const multiDropdownSources = [...document.querySelectorAll('.multi-dropdown-source')];
 
 const teamByCode = Object.fromEntries(TEAMS.map(t => [t.code, t]));
+const VIUTV_FREE_GROUP_FIXTURES = new Set([
+  'GROUP_STAGE|2026-06-11T19:00:00Z|MEX|RSA',
+  'GROUP_STAGE|2026-06-12T19:00:00Z|BIH|CAN',
+  'GROUP_STAGE|2026-06-13T01:00:00Z|PAR|USA',
+  'GROUP_STAGE|2026-06-16T19:00:00Z|FRA|SEN',
+  'GROUP_STAGE|2026-06-18T02:00:00Z|COL|UZB',
+  'GROUP_STAGE|2026-06-19T01:00:00Z|KOR|MEX',
+  'GROUP_STAGE|2026-06-19T19:00:00Z|AUS|USA',
+  'GROUP_STAGE|2026-06-21T04:00:00Z|JPN|TUN',
+  'GROUP_STAGE|2026-06-22T01:00:00Z|EGY|NZL',
+  'GROUP_STAGE|2026-06-23T00:00:00Z|NOR|SEN',
+  'GROUP_STAGE|2026-06-23T03:00:00Z|DZA|JOR',
+  'GROUP_STAGE|2026-06-23T23:00:00Z|CRO|PAN',
+  'GROUP_STAGE|2026-06-24T02:00:00Z|COD|COL',
+  'GROUP_STAGE|2026-06-25T01:00:00Z|KOR|RSA',
+  'GROUP_STAGE|2026-06-26T02:00:00Z|TUR|USA',
+  'GROUP_STAGE|2026-06-27T03:00:00Z|BEL|NZL'
+]);
+const VIUTV_FREE_KNOCKOUT_FIXTURES = new Set([
+  'LAST_32|2026-07-03T18:00:00Z',
+  'LAST_16|2026-07-04T17:00:00Z',
+  'LAST_16|2026-07-05T20:00:00Z',
+  'QUARTER_FINALS|2026-07-09T20:00:00Z',
+  'QUARTER_FINALS|2026-07-11T21:00:00Z',
+  'SEMI_FINALS|2026-07-14T19:00:00Z',
+  'SEMI_FINALS|2026-07-15T19:00:00Z',
+  'THIRD_PLACE|2026-07-18T21:00:00Z',
+  'FINAL|2026-07-19T19:00:00Z'
+]);
 
 function isMobileViewport(){
   return typeof window !== 'undefined'
@@ -575,6 +605,7 @@ function fixtureMatches(m){
   const awayLocal = teamByCode[m.awayTeam?.tla] || getTeamByName(m.awayTeam?.name || '');
   const group = homeLocal?.group || awayLocal?.group || m.group || '';
   if(!matchesMulti(state.stages, m.stage)) return false;
+  if(state.fixtureBroadcast === 'viutv' && !isViuTvFreeFixture(m)) return false;
   if(!matchesMulti(state.groups, group)) return false;
   if(state.teams.length && ![homeLocal?.code, awayLocal?.code, m.homeTeam?.tla, m.awayTeam?.tla].some(code => state.teams.includes(code))) return false;
   if(!q) return true;
@@ -621,6 +652,26 @@ function fixtureStageLabel(match){
   return formatStageLabel(match?.stage || 'Fixtures');
 }
 
+function fixtureBroadcastLookupKey(match){
+  const codes = fixtureTeamsForMatch(match).sort();
+  return `${match?.stage || ''}|${match?.utcDate || ''}|${codes.join('|')}`;
+}
+
+function fixtureBroadcastStageDateKey(match){
+  return `${match?.stage || ''}|${match?.utcDate || ''}`;
+}
+
+function isViuTvFreeFixture(match){
+  if(!match?.utcDate || !match?.stage) return false;
+  if(match.stage === 'GROUP_STAGE') return VIUTV_FREE_GROUP_FIXTURES.has(fixtureBroadcastLookupKey(match));
+  return VIUTV_FREE_KNOCKOUT_FIXTURES.has(fixtureBroadcastStageDateKey(match));
+}
+
+function fixtureBroadcastBadge(match){
+  if(!isViuTvFreeFixture(match)) return '';
+  return '<span class="fixture-broadcast-badge" title="Free broadcast in Hong Kong on ViuTV">ViuTV HK Free</span>';
+}
+
 function renderFixtureCard(match){
   const placeholder = !hasRealFixtureTeams(match) || (match.stage !== 'GROUP_STAGE' && !fixtureHasLockedTeams(match));
   return `
@@ -629,6 +680,7 @@ function renderFixtureCard(match){
         <div class="fixture-kickoff">${escapeHtml(formatFixtureKickoff(match.utcDate))}</div>
         <div class="fixture-card-tags">
           <span class="fixture-status ${escapeHtml(fixtureStatusClass(match.status))}">${escapeHtml(statusText(match.status))}</span>
+          ${fixtureBroadcastBadge(match)}
           ${placeholder ? '<span class="fixture-placeholder-badge">Teams TBD</span>' : ''}
         </div>
       </div>
@@ -703,11 +755,14 @@ function renderFavoriteFixtures(){
   const matches = dedupeFixtures(live.matches)
     .filter(isUpcomingFixture)
     .filter(favoriteFixtureMatches)
+    .filter(match => state.fixtureBroadcast !== 'viutv' || isViuTvFreeFixture(match))
     .sort((a, b) => new Date(a.utcDate || 0) - new Date(b.utcDate || 0))
     .slice(0, 12);
 
   if(!matches.length){
-    container.innerHTML = '<div class="empty-roster">No upcoming matches found yet for the selected favorite teams.</div>';
+    container.innerHTML = state.fixtureBroadcast === 'viutv'
+      ? '<div class="empty-roster">No upcoming ViuTV free-broadcast matches found yet for the selected favorite teams.</div>'
+      : '<div class="empty-roster">No upcoming matches found yet for the selected favorite teams.</div>';
     return;
   }
 
@@ -728,7 +783,10 @@ function renderFavoriteFixtures(){
                 <div class="fixture-kickoff">${escapeHtml(formatFixtureKickoff(match.utcDate))}</div>
                 <div class="favorite-fixture-subtitle">${escapeHtml(contextLabel)}</div>
               </div>
-              <span class="fixture-status ${escapeHtml(fixtureStatusClass(match.status))}">${escapeHtml(statusText(match.status))}</span>
+              <div class="fixture-card-tags fixture-card-tags-favorite">
+                <span class="fixture-status ${escapeHtml(fixtureStatusClass(match.status))}">${escapeHtml(statusText(match.status))}</span>
+                ${fixtureBroadcastBadge(match)}
+              </div>
             </div>
             <div class="fixture-teams">
               <div class="fixture-team ${homeFavorite ? 'favorite-fixture-team-highlight' : ''}">
@@ -1324,9 +1382,12 @@ function updateControlVisibility(){
   }
   positionFilter.hidden = state.view === 'teams' || state.view === 'standings' || state.view === 'fixtures';
   stageFilter.hidden = state.view !== 'fixtures';
+  if(broadcastFilter) broadcastFilter.hidden = state.view !== 'fixtures';
   if(state.view !== 'fixtures'){
     state.stages = [];
     setMultiSelectValues(stageFilter, state.stages);
+    state.fixtureBroadcast = 'all';
+    if(broadcastFilter) broadcastFilter.value = state.fixtureBroadcast;
   }
   refreshMultiDropdown(positionFilter);
   refreshMultiDropdown(stageFilter);
@@ -1403,6 +1464,11 @@ favoriteTeamFilter?.addEventListener('change', e => {
 });
 positionFilter.addEventListener('change', e => { state.positions = getMultiSelectValues(e.target); render(); });
 stageFilter.addEventListener('change', e => { state.stages = getMultiSelectValues(e.target); renderFixtures(); });
+broadcastFilter?.addEventListener('change', e => {
+  state.fixtureBroadcast = e.target.value === 'viutv' ? 'viutv' : 'all';
+  renderFavoriteFixtures();
+  renderFixtures();
+});
 document.addEventListener('click', event => {
   const trigger = event.target.closest('.multi-dropdown-trigger');
   const checkbox = event.target.closest('.multi-dropdown-option input');
@@ -1444,8 +1510,9 @@ document.addEventListener('click', event => {
   }
 });
 document.querySelector('#resetBtn').onclick = () => {
-  state.groups=[]; state.teams=[]; state.positions=[]; state.stages=[]; state.search=''; state.selected=null;
+  state.groups=[]; state.teams=[]; state.positions=[]; state.stages=[]; state.search=''; state.selected=null; state.fixtureBroadcast='all';
   search.value='';
+  if(broadcastFilter) broadcastFilter.value = state.fixtureBroadcast;
   setMultiSelectValues(groupFilter, state.groups);
   setMultiSelectValues(teamFilter, state.teams);
   setMultiSelectValues(positionFilter, state.positions);
