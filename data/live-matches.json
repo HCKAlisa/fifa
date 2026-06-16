@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -493,7 +493,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "score": {
@@ -546,7 +546,7 @@
   {
     "id": 537391,
     "utcDate": "2026-06-16T19:00:00Z",
-    "status": "PAUSED",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
@@ -565,11 +565,11 @@
       "crest": "https://crests.football-data.org/senegal.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
-        "away": 0
+        "home": 3,
+        "away": 1
       },
       "halfTime": {
         "home": 0,
@@ -580,7 +580,7 @@
   {
     "id": 537392,
     "utcDate": "2026-06-16T22:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
@@ -599,11 +599,11 @@
       "crest": "https://crests.football-data.org/813.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1302,7 +1302,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
@@ -2118,7 +2118,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
