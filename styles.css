@@ -1219,6 +1219,14 @@ tbody tr:last-child td {
     overflow: hidden;
 }
 
+.fixture-past-block {
+    margin: 18px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .025);
+    overflow: hidden;
+}
+
 .fixture-date-summary {
     padding: 12px 14px;
     margin: 0;
@@ -1228,6 +1236,10 @@ tbody tr:last-child td {
 
 .fixture-date-block > :not(summary) {
     padding: 14px
+}
+
+.fixture-past-body {
+    padding: 4px 0 14px;
 }
 
 .fixture-date-label {
@@ -1458,7 +1470,7 @@ footer {
 
 @media (max-width:760px) {
     :root {
-        --page-pad: 16px
+        --page-pad: 10px
     }
 
     .status-bar,
@@ -1522,8 +1534,40 @@ footer {
         grid-template-columns: 1fr
     }
 
+    .fixture-grouping-controls {
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    #fixturesView .panel {
+        padding: 10px;
+        border-radius: 18px;
+    }
+
+    #fixturesView .favorite-fixtures-panel {
+        margin-bottom: 14px;
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    #fixturesView .favorite-fixtures-head {
+        margin-bottom: 10px;
+    }
+
+    #fixturesView .favorite-fixture-hint {
+        margin-bottom: 8px;
+    }
+
+    .fixture-stage-head {
+        padding: 10px 10px;
+    }
+
+    .fixture-stage > :not(summary) {
+        padding: 4px;
+    }
+
     .panel {
-        padding: 18px
+        padding: 14px
     }
 
     .modal-shell {
@@ -1540,7 +1584,6 @@ footer {
     .player-view-toolbar,
     .favorite-fixtures-head,
     .favorite-fixture-top,
-    .fixture-stage-head,
     .fixture-group-head,
     .fixture-card-top,
     .fixture-date-summary {
@@ -1548,32 +1591,101 @@ footer {
         align-items: flex-start;
     }
 
+    .fixture-stage-head,
+    .fixture-date-summary,
+    .fixture-group-head.fixture-date-summary {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .fixture-stage-head .muted,
+    .fixture-date-summary .muted {
+        margin-left: auto;
+        white-space: nowrap;
+    }
+
+    .fixture-group {
+        margin: 0 0 8px;
+    }
+
+    .fixture-date-summary {
+        padding: 8px 10px;
+    }
+
     .fixture-card-tags {
         justify-content: flex-start
     }
 
-    .fixture-teams {
-        grid-template-columns: 1fr
+    .fixture-card .fixture-teams,
+    .favorite-fixture-card .fixture-teams {
+        grid-template-columns: minmax(0, 1fr) minmax(84px, auto) minmax(0, 1fr);
+        align-items: start;
+        gap: 10px;
     }
 
-    .fixture-team-away {
-        text-align: left
+    .fixture-card .fixture-team,
+    .favorite-fixture-card .fixture-team {
+        display: grid;
+        gap: 8px;
+        align-content: start;
     }
 
-    .fixture-team-away .fixture-team-head {
-        justify-content: flex-start
+    .fixture-card .fixture-team-head,
+    .favorite-fixture-card .fixture-team-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: 8px;
+        justify-items: start;
     }
 
-    .fixture-score {
-        justify-self: start
+    .fixture-card .fixture-team-away,
+    .favorite-fixture-card .fixture-team-away {
+        text-align: right;
+    }
+
+    .fixture-card .fixture-team-away .fixture-team-head,
+    .favorite-fixture-card .fixture-team-away .fixture-team-head {
+        justify-items: end;
+    }
+
+    .fixture-card .fixture-score,
+    .favorite-fixture-card .fixture-score {
+        min-width: 84px;
+        justify-self: center;
+        align-self: center;
     }
 
     .fixture-date-block {
-        margin: 14px
+        margin: 4px
+    }
+
+    .fixture-past-block {
+        margin: 4px;
+    }
+
+    .fixture-date-block > :not(summary) {
+        padding: 4px;
+    }
+
+    .fixture-past-body {
+        padding: 0 0 4px;
+    }
+
+    .fixture-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .fixture-card {
+        width: 100%;
+        max-width: none;
+        border-radius: 16px;
+        padding: 14px;
     }
 
     .favorite-fixtures-panel {
-        padding: 16px;
+        padding: 12px;
     }
 
     .favorite-fixtures-picker,
@@ -1582,7 +1694,12 @@ footer {
     }
 
     .favorite-fixture-row {
-        grid-auto-columns: minmax(320px, 90vw);
+        grid-auto-columns: 100%;
+        gap: 10px;
+    }
+
+    .favorite-fixture-card {
+        width: 100%;
     }
 
     .favorite-fixture-card .fixture-team.favorite-fixture-team-highlight {
@@ -1652,6 +1769,11 @@ footer {
     .player-card,
     .fixture-card {
         padding: 16px
+    }
+
+    #fixturesView .fixture-card,
+    #fixturesView .favorite-fixture-card {
+        padding: 14px;
     }
 
     .table-wrap {
@@ -1737,6 +1859,10 @@ footer {
 }
 
 @media (max-width:480px) {
+    :root {
+        --page-pad: 8px
+    }
+
     .hero {
         padding-top: 24px;
         padding-bottom: 24px
@@ -1761,6 +1887,16 @@ footer {
     .panel {
         padding: 16px;
         border-radius: 22px
+    }
+
+    #fixturesView .panel {
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    #fixturesView .favorite-fixtures-panel {
+        padding: 6px;
+        border-radius: 14px;
     }
 
     .badge {

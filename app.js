@@ -26,6 +26,7 @@ const fixtureGroupingButtons = [...document.querySelectorAll('.fixture-grouping-
 const teamHiddenControls = [...document.querySelectorAll('[data-hide-on-teams="true"]')];
 const teamVisibleControls = [...document.querySelectorAll('[data-show-on-teams="true"]')];
 const multiDropdownSources = [...document.querySelectorAll('.multi-dropdown-source')];
+let dayBoundaryTimer = null;
 
 const teamByCode = Object.fromEntries(TEAMS.map(t => [t.code, t]));
 const VIUTV_FREE_GROUP_FIXTURES = new Set([
@@ -477,6 +478,15 @@ function isTodayFixtureDate(value){
   return d.toDateString() === new Date().toDateString();
 }
 
+function isPastFixtureDate(value){
+  if(!value) return false;
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return false;
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return d < todayStart;
+}
+
 function fixtureTeamMarkup(team){
   const local = getLocalTeam(team);
   const hasRealTeam = Boolean(local?.code || team?.tla || team?.name || team?.shortName);
@@ -814,6 +824,84 @@ function renderFixtureDateSection(label, matches){
       </summary>
       <div class="fixture-list">
         ${matches.map(renderFixtureCard).join('')}
+      </div>
+    </details>
+  `;
+}
+
+function renderFixturesGroupedByGroupThenDate(matches){
+  const grouped = new Map();
+  matches.forEach(match => {
+    const label = fixtureGroupLabel(match);
+    if(!grouped.has(label)) grouped.set(label, []);
+    grouped.get(label).push(match);
+  });
+  return [...grouped.entries()].map(([label, groupMatches]) => `
+    <section class="fixture-group">
+      <div class="fixture-group-head">
+        <h4>${escapeHtml(label)}</h4>
+        <span class="muted">${groupMatches.length} match${groupMatches.length === 1 ? '' : 'es'}</span>
+      </div>
+      ${Object.entries(groupMatches.reduce((acc, match) => {
+        const dateKey = formatFixtureDateLabel(match.utcDate);
+        if(!acc[dateKey]) acc[dateKey] = [];
+        acc[dateKey].push(match);
+        return acc;
+      }, {})).map(([dateLabel, dateMatches]) => renderFixtureDateSection(dateLabel, dateMatches)).join('')}
+    </section>
+  `).join('');
+}
+
+function renderFixturesGroupedByDateThenGroup(matches){
+  const groupedByDate = new Map();
+  matches.forEach(match => {
+    const dateLabel = formatFixtureDateLabel(match.utcDate);
+    if(!groupedByDate.has(dateLabel)) groupedByDate.set(dateLabel, []);
+    groupedByDate.get(dateLabel).push(match);
+  });
+
+  return [...groupedByDate.entries()].map(([dateLabel, dateMatches]) => {
+    const byGroup = new Map();
+    dateMatches.forEach(match => {
+      const label = fixtureGroupLabel(match);
+      if(!byGroup.has(label)) byGroup.set(label, []);
+      byGroup.get(label).push(match);
+    });
+    return `
+      <details class="fixture-date-block" ${dateMatches.some(match => isTodayFixtureDate(match.utcDate)) ? 'open' : ''}>
+        <summary class="fixture-group-head fixture-date-summary">
+          <h4>${escapeHtml(dateLabel)}</h4>
+          <span class="muted">${dateMatches.length} match${dateMatches.length === 1 ? '' : 'es'}</span>
+        </summary>
+        ${[...byGroup.entries()].map(([groupLabel, groupMatches]) => `
+          <div class="fixture-date-block">
+            <div class="fixture-date-label">${escapeHtml(groupLabel)}</div>
+            <div class="fixture-list">
+              ${groupMatches.map(renderFixtureCard).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </details>
+    `;
+  }).join('');
+}
+
+function renderFixtureStageMatches(matches){
+  return state.fixtureGrouping === 'group-date'
+    ? renderFixturesGroupedByGroupThenDate(matches)
+    : renderFixturesGroupedByDateThenGroup(matches);
+}
+
+function renderFixturePastDatesDrawer(pastMatches, hasUpcomingMatches){
+  if(!pastMatches.length) return '';
+  return `
+    <details class="fixture-past-block" ${hasUpcomingMatches ? '' : 'open'}>
+      <summary class="fixture-date-summary fixture-past-summary">
+        <span class="fixture-date-label">Past dates / 已完成賽日</span>
+        <span class="muted">${pastMatches.length} match${pastMatches.length === 1 ? '' : 'es'}</span>
+      </summary>
+      <div class="fixture-past-body">
+        ${renderFixtureStageMatches(pastMatches)}
       </div>
     </details>
   `;
@@ -1204,72 +1292,16 @@ function renderFixtures(){
   });
 
   document.querySelector('#fixtures').innerHTML = [...byStage.entries()].map(([stageLabel, stageMatches]) => {
-    if(state.fixtureGrouping === 'group-date'){
-      const grouped = new Map();
-      stageMatches.forEach(match => {
-        const label = fixtureGroupLabel(match);
-        if(!grouped.has(label)) grouped.set(label, []);
-        grouped.get(label).push(match);
-      });
-      return `
-      <details class="fixture-stage" open>
-        <summary class="fixture-stage-head">
-          <h3>${escapeHtml(stageLabel)}</h3>
-          <span class="muted">${stageMatches.length} match${stageMatches.length === 1 ? '' : 'es'}</span>
-        </summary>
-        ${[...grouped.entries()].map(([label, groupMatches]) => `
-    <section class="fixture-group">
-      <div class="fixture-group-head">
-        <h4>${escapeHtml(label)}</h4>
-        <span class="muted">${groupMatches.length} match${groupMatches.length === 1 ? '' : 'es'}</span>
-      </div>
-      ${Object.entries(groupMatches.reduce((acc, match) => {
-        const dateKey = formatFixtureDateLabel(match.utcDate);
-        if(!acc[dateKey]) acc[dateKey] = [];
-        acc[dateKey].push(match);
-        return acc;
-      }, {})).map(([dateLabel, dateMatches]) => renderFixtureDateSection(dateLabel, dateMatches)).join('')}
-    </section>
-  `).join('')}
-      </details>`;
-    }
-
-    const groupedByDate = new Map();
-    stageMatches.forEach(match => {
-      const dateLabel = formatFixtureDateLabel(match.utcDate);
-      if(!groupedByDate.has(dateLabel)) groupedByDate.set(dateLabel, []);
-      groupedByDate.get(dateLabel).push(match);
-    });
-
+    const upcomingMatches = stageMatches.filter(match => !isPastFixtureDate(match.utcDate));
+    const pastMatches = stageMatches.filter(match => isPastFixtureDate(match.utcDate));
     return `
       <details class="fixture-stage" open>
         <summary class="fixture-stage-head">
           <h3>${escapeHtml(stageLabel)}</h3>
           <span class="muted">${stageMatches.length} match${stageMatches.length === 1 ? '' : 'es'}</span>
         </summary>
-        ${[...groupedByDate.entries()].map(([dateLabel, dateMatches]) => {
-          const byGroup = new Map();
-          dateMatches.forEach(match => {
-            const label = fixtureGroupLabel(match);
-            if(!byGroup.has(label)) byGroup.set(label, []);
-            byGroup.get(label).push(match);
-          });
-          return `
-    <details class="fixture-date-block" ${dateMatches.some(match => isTodayFixtureDate(match.utcDate)) ? 'open' : ''}>
-      <summary class="fixture-group-head fixture-date-summary">
-        <h4>${escapeHtml(dateLabel)}</h4>
-        <span class="muted">${dateMatches.length} match${dateMatches.length === 1 ? '' : 'es'}</span>
-      </summary>
-      ${[...byGroup.entries()].map(([groupLabel, groupMatches]) => `
-        <div class="fixture-date-block">
-          <div class="fixture-date-label">${escapeHtml(groupLabel)}</div>
-          <div class="fixture-list">
-            ${groupMatches.map(renderFixtureCard).join('')}
-          </div>
-        </div>
-      `).join('')}
-    </details>`;
-        }).join('')}
+        ${upcomingMatches.length ? renderFixtureStageMatches(upcomingMatches) : '<div class="empty-roster">No today or upcoming matches in this stage.</div>'}
+        ${renderFixturePastDatesDrawer(pastMatches, upcomingMatches.length > 0)}
       </details>`;
   }).join('');
 }
@@ -1408,6 +1440,22 @@ function render(){
   updatePlayerViewToggleButtons();
 }
 
+function refreshFixtureDateSections(){
+  renderFavoriteFixtures();
+  renderFixtures();
+}
+
+function scheduleNextDayBoundaryRefresh(){
+  if(dayBoundaryTimer) window.clearTimeout(dayBoundaryTimer);
+  const now = new Date();
+  const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 1);
+  const delay = Math.max(1000, nextMidnight.getTime() - now.getTime());
+  dayBoundaryTimer = window.setTimeout(() => {
+    refreshFixtureDateSections();
+    scheduleNextDayBoundaryRefresh();
+  }, delay);
+}
+
 async function loadJson(path, fallback){
   try{
     const res = await fetch(path, { cache:'no-store' });
@@ -1451,6 +1499,15 @@ document.addEventListener('keydown', event => {
   if(event.key === 'Escape' && !teamModal?.hidden){
     closeTeamModal();
   }
+});
+document.addEventListener('visibilitychange', () => {
+  if(document.hidden) return;
+  refreshFixtureDateSections();
+  scheduleNextDayBoundaryRefresh();
+});
+window.addEventListener('focus', () => {
+  refreshFixtureDateSections();
+  scheduleNextDayBoundaryRefresh();
 });
 search.addEventListener('input', e => { state.search = e.target.value; render(); });
 teamSort?.addEventListener('change', e => {
@@ -1520,4 +1577,5 @@ document.querySelector('#resetBtn').onclick = () => {
   render();
 };
 render();
+scheduleNextDayBoundaryRefresh();
 loadLiveData();
