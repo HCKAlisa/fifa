@@ -682,7 +682,7 @@
   {
     "id": 537403,
     "utcDate": "2026-06-17T17:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
@@ -701,11 +701,11 @@
       "crest": "https://crests.football-data.org/congo_dr.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
         "home": null,

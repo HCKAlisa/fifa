@@ -5426,11 +5426,11 @@
       }
     ],
     "coach": {
-      "id": 45108,
-      "firstName": "Sabri",
-      "lastName": "Lamouchi",
-      "name": "Sabri Lamouchi",
-      "dateOfBirth": "1971-11-09",
+      "id": 10170,
+      "firstName": "Hervé",
+      "lastName": "Renard",
+      "name": "Hervé Renard",
+      "dateOfBirth": "1968-09-30",
       "nationality": "France",
       "contract": {
         "start": null,
