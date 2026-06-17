@@ -3,11 +3,13 @@
   "competition": "WC",
   "season": "2026",
   "firstMatchUtcDate": "2026-06-11T19:00:00Z",
-  "updatedAt": "2026-06-17T17:34:26.331Z",
+  "updatedAt": "2026-06-17T20:31:05.548Z",
   "counts": {
     "matches": 104,
     "teams": 48,
-    "standingsTables": 3
+    "standingsTables": 0
   },
-  "warnings": []
+  "warnings": [
+    "standings: fetch failed"
+  ]
 }
