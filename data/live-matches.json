@@ -818,7 +818,7 @@
   {
     "id": 537329,
     "utcDate": "2026-06-18T16:00:00Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -837,15 +837,15 @@
       "crest": "https://crests.football-data.org/9396.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     }
   },

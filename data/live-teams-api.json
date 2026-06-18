@@ -9895,17 +9895,17 @@
         "nationality": "Uzbekistan"
       },
       {
-        "id": 117326,
-        "name": "Jaloliddin Masharipov",
-        "position": "Offence",
-        "dateOfBirth": "1993-09-01",
-        "nationality": "Uzbekistan"
-      },
-      {
         "id": 183140,
         "name": "Igor Sergeev",
         "position": "Offence",
         "dateOfBirth": "1993-04-30",
+        "nationality": "Uzbekistan"
+      },
+      {
+        "id": 212675,
+        "name": "Ruslanbek Jiyanov",
+        "position": "Offence",
+        "dateOfBirth": "2001-06-05",
         "nationality": "Uzbekistan"
       },
       {
