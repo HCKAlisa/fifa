@@ -750,7 +750,7 @@
   {
     "id": 537410,
     "utcDate": "2026-06-17T23:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_L",
@@ -769,22 +769,22 @@
       "crest": "https://crests.football-data.org/panama.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537404,
     "utcDate": "2026-06-18T02:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 1,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
@@ -803,11 +803,11 @@
       "crest": "https://crests.football-data.org/818.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
