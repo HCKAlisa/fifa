@@ -886,7 +886,7 @@
   {
     "id": 537336,
     "utcDate": "2026-06-18T22:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_B",
@@ -908,19 +908,19 @@
       "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 2,
+        "home": 6,
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       }
     }
   },
   {
     "id": 537330,
     "utcDate": "2026-06-19T01:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -939,11 +939,11 @@
       "crest": "https://crests.football-data.org/772.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
