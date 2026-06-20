@@ -493,7 +493,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "score": {
@@ -1022,7 +1022,7 @@
   {
     "id": 537341,
     "utcDate": "2026-06-20T00:30:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
@@ -1041,15 +1041,15 @@
       "crest": "https://crests.football-data.org/haiti.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 3,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
@@ -1302,7 +1302,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -2118,7 +2118,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
