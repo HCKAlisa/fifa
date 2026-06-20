@@ -2331,6 +2331,13 @@
         "nationality": "England"
       },
       {
+        "id": 7810,
+        "name": "Trevoh Chalobah",
+        "position": "Defence",
+        "dateOfBirth": "1999-07-05",
+        "nationality": "England"
+      },
+      {
         "id": 56628,
         "name": "Reece James",
         "position": "Defence",
@@ -2349,13 +2356,6 @@
         "name": "Marc Guéhi",
         "position": "Defence",
         "dateOfBirth": "2000-07-13",
-        "nationality": "England"
-      },
-      {
-        "id": 168712,
-        "name": "Valentino Livramento",
-        "position": "Defence",
-        "dateOfBirth": "2002-11-12",
         "nationality": "England"
       },
       {
@@ -4004,6 +4004,13 @@
         "nationality": "New Zealand"
       },
       {
+        "id": 4693,
+        "name": "Logan Rogerson",
+        "position": "Offence",
+        "dateOfBirth": "1998-05-28",
+        "nationality": "New Zealand"
+      },
+      {
         "id": 8057,
         "name": "Chris Wood",
         "position": "Offence",
@@ -4022,13 +4029,6 @@
         "name": "Elijah Just",
         "position": "Offence",
         "dateOfBirth": "2000-05-01",
-        "nationality": "New Zealand"
-      },
-      {
-        "id": 185023,
-        "name": "Matthew Garbett",
-        "position": "Offence",
-        "dateOfBirth": "2002-04-13",
         "nationality": "New Zealand"
       },
       {
