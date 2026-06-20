@@ -31,6 +31,25 @@
         {
           "position": 1,
           "team": {
+            "id": 759,
+            "name": "Germany",
+            "shortName": "Germany",
+            "tla": "GER",
+            "crest": "https://crests.football-data.org/759.svg"
+          },
+          "playedGames": 2,
+          "form": "W,W",
+          "won": 2,
+          "draw": 0,
+          "lost": 0,
+          "points": 6,
+          "goalsFor": 9,
+          "goalsAgainst": 2,
+          "goalDifference": 7
+        },
+        {
+          "position": 2,
+          "team": {
             "id": 771,
             "name": "United States",
             "shortName": "USA",
@@ -48,7 +67,7 @@
           "goalDifference": 5
         },
         {
-          "position": 2,
+          "position": 3,
           "team": {
             "id": 769,
             "name": "Mexico",
@@ -67,7 +86,7 @@
           "goalDifference": 3
         },
         {
-          "position": 3,
+          "position": 4,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -86,7 +105,7 @@
           "goalDifference": 6
         },
         {
-          "position": 4,
+          "position": 5,
           "team": {
             "id": 8601,
             "name": "Netherlands",
@@ -105,7 +124,7 @@
           "goalDifference": 4
         },
         {
-          "position": 5,
+          "position": 6,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -124,7 +143,7 @@
           "goalDifference": 3
         },
         {
-          "position": 6,
+          "position": 7,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -143,7 +162,7 @@
           "goalDifference": 3
         },
         {
-          "position": 7,
+          "position": 8,
           "team": {
             "id": 815,
             "name": "Morocco",
@@ -160,25 +179,6 @@
           "goalsFor": 2,
           "goalsAgainst": 1,
           "goalDifference": 1
-        },
-        {
-          "position": 8,
-          "team": {
-            "id": 759,
-            "name": "Germany",
-            "shortName": "Germany",
-            "tla": "GER",
-            "crest": "https://crests.football-data.org/759.svg"
-          },
-          "playedGames": 1,
-          "form": "W",
-          "won": 1,
-          "draw": 0,
-          "lost": 0,
-          "points": 3,
-          "goalsFor": 7,
-          "goalsAgainst": 1,
-          "goalDifference": 6
         },
         {
           "position": 9,
@@ -297,25 +297,6 @@
         {
           "position": 15,
           "team": {
-            "id": 1935,
-            "name": "Ivory Coast",
-            "shortName": "Ivory Coast",
-            "tla": "CIV",
-            "crest": "https://crests.football-data.org/787.svg"
-          },
-          "playedGames": 1,
-          "form": "W",
-          "won": 1,
-          "draw": 0,
-          "lost": 0,
-          "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
-        },
-        {
-          "position": 16,
-          "team": {
             "id": 763,
             "name": "Ghana",
             "shortName": "Ghana",
@@ -333,7 +314,7 @@
           "goalDifference": 1
         },
         {
-          "position": 17,
+          "position": 16,
           "team": {
             "id": 792,
             "name": "Sweden",
@@ -352,7 +333,7 @@
           "goalDifference": 0
         },
         {
-          "position": 18,
+          "position": 17,
           "team": {
             "id": 772,
             "name": "South Korea",
@@ -371,13 +352,32 @@
           "goalDifference": 0
         },
         {
-          "position": 19,
+          "position": 18,
           "team": {
             "id": 779,
             "name": "Australia",
             "shortName": "Australia",
             "tla": "AUS",
             "crest": "https://crests.football-data.org/779.svg"
+          },
+          "playedGames": 2,
+          "form": "L,W",
+          "won": 1,
+          "draw": 0,
+          "lost": 1,
+          "points": 3,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
+        {
+          "position": 19,
+          "team": {
+            "id": 1935,
+            "name": "Ivory Coast",
+            "shortName": "Ivory Coast",
+            "tla": "CIV",
+            "crest": "https://crests.football-data.org/787.svg"
           },
           "playedGames": 2,
           "form": "L,W",
@@ -950,6 +950,25 @@
         {
           "position": 1,
           "team": {
+            "id": 759,
+            "name": "Germany",
+            "shortName": "Germany",
+            "tla": "GER",
+            "crest": "https://crests.football-data.org/759.svg"
+          },
+          "playedGames": 2,
+          "form": "",
+          "won": 2,
+          "draw": 0,
+          "lost": 0,
+          "points": 6,
+          "goalsFor": 9,
+          "goalsAgainst": 2,
+          "goalDifference": 7
+        },
+        {
+          "position": 2,
+          "team": {
             "id": 771,
             "name": "United States",
             "shortName": "USA",
@@ -967,7 +986,7 @@
           "goalDifference": 5
         },
         {
-          "position": 2,
+          "position": 3,
           "team": {
             "id": 769,
             "name": "Mexico",
@@ -986,7 +1005,7 @@
           "goalDifference": 3
         },
         {
-          "position": 3,
+          "position": 4,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -1005,7 +1024,7 @@
           "goalDifference": 6
         },
         {
-          "position": 4,
+          "position": 5,
           "team": {
             "id": 8601,
             "name": "Netherlands",
@@ -1024,7 +1043,7 @@
           "goalDifference": 4
         },
         {
-          "position": 5,
+          "position": 6,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -1041,25 +1060,6 @@
           "goalsFor": 4,
           "goalsAgainst": 1,
           "goalDifference": 3
-        },
-        {
-          "position": 6,
-          "team": {
-            "id": 759,
-            "name": "Germany",
-            "shortName": "Germany",
-            "tla": "GER",
-            "crest": "https://crests.football-data.org/759.svg"
-          },
-          "playedGames": 1,
-          "form": "",
-          "won": 1,
-          "draw": 0,
-          "lost": 0,
-          "points": 3,
-          "goalsFor": 7,
-          "goalsAgainst": 1,
-          "goalDifference": 6
         },
         {
           "position": 7,
@@ -2249,25 +2249,6 @@
         {
           "position": 21,
           "team": {
-            "id": 1935,
-            "name": "Ivory Coast",
-            "shortName": "Ivory Coast",
-            "tla": "CIV",
-            "crest": "https://crests.football-data.org/787.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 22,
-          "team": {
             "id": 760,
             "name": "Spain",
             "shortName": "Spain",
@@ -2285,7 +2266,7 @@
           "goalDifference": 0
         },
         {
-          "position": 23,
+          "position": 22,
           "team": {
             "id": 805,
             "name": "Belgium",
@@ -2304,7 +2285,7 @@
           "goalDifference": 0
         },
         {
-          "position": 24,
+          "position": 23,
           "team": {
             "id": 801,
             "name": "Saudi Arabia",
@@ -2323,7 +2304,7 @@
           "goalDifference": 0
         },
         {
-          "position": 25,
+          "position": 24,
           "team": {
             "id": 840,
             "name": "Iran",
@@ -2342,7 +2323,7 @@
           "goalDifference": 0
         },
         {
-          "position": 26,
+          "position": 25,
           "team": {
             "id": 773,
             "name": "France",
@@ -2361,7 +2342,7 @@
           "goalDifference": 0
         },
         {
-          "position": 27,
+          "position": 26,
           "team": {
             "id": 8062,
             "name": "Iraq",
@@ -2380,7 +2361,7 @@
           "goalDifference": 0
         },
         {
-          "position": 28,
+          "position": 27,
           "team": {
             "id": 762,
             "name": "Argentina",
@@ -2399,7 +2380,7 @@
           "goalDifference": 0
         },
         {
-          "position": 29,
+          "position": 28,
           "team": {
             "id": 816,
             "name": "Austria",
@@ -2418,7 +2399,7 @@
           "goalDifference": 0
         },
         {
-          "position": 30,
+          "position": 29,
           "team": {
             "id": 765,
             "name": "Portugal",
@@ -2437,7 +2418,7 @@
           "goalDifference": 0
         },
         {
-          "position": 31,
+          "position": 30,
           "team": {
             "id": 770,
             "name": "England",
@@ -2456,7 +2437,7 @@
           "goalDifference": 0
         },
         {
-          "position": 32,
+          "position": 31,
           "team": {
             "id": 763,
             "name": "Ghana",
@@ -2475,7 +2456,7 @@
           "goalDifference": 0
         },
         {
-          "position": 33,
+          "position": 32,
           "team": {
             "id": 8070,
             "name": "Uzbekistan",
@@ -2494,13 +2475,32 @@
           "goalDifference": 0
         },
         {
-          "position": 34,
+          "position": 33,
           "team": {
             "id": 798,
             "name": "Czechia",
             "shortName": "Czechia",
             "tla": "CZE",
             "crest": "https://crests.football-data.org/798.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 0,
+          "lost": 1,
+          "points": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDifference": -1
+        },
+        {
+          "position": 34,
+          "team": {
+            "id": 1935,
+            "name": "Ivory Coast",
+            "shortName": "Ivory Coast",
+            "tla": "CIV",
+            "crest": "https://crests.football-data.org/787.svg"
           },
           "playedGames": 1,
           "form": "",
