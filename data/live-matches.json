@@ -493,7 +493,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "score": {
@@ -1226,7 +1226,7 @@
   {
     "id": 537371,
     "utcDate": "2026-06-21T16:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -1245,11 +1245,11 @@
       "crest": "https://crests.football-data.org/saudi_arabia.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -1302,7 +1302,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -2118,7 +2118,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
