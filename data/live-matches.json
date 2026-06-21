@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1248,7 +1248,7 @@
       "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 5,
+        "home": 4,
         "away": 0
       },
       "halfTime": {
@@ -1260,7 +1260,7 @@
   {
     "id": 537365,
     "utcDate": "2026-06-21T19:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -1279,22 +1279,22 @@
       "crest": "https://crests.football-data.org/iran.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537372,
     "utcDate": "2026-06-21T22:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -1313,11 +1313,11 @@
       "crest": "https://crests.football-data.org/cape_verde.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
