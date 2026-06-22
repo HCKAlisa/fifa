@@ -493,7 +493,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "score": {
@@ -1294,7 +1294,7 @@
   {
     "id": 537372,
     "utcDate": "2026-06-21T22:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -1302,7 +1302,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -1316,19 +1316,19 @@
       "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
-        "away": 0
+        "home": 2,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       }
     }
   },
   {
     "id": 537366,
     "utcDate": "2026-06-22T01:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -1347,11 +1347,11 @@
       "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -2118,7 +2118,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URY",
+      "tla": "URU",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
