@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1464,7 +1464,7 @@
   {
     "id": 537400,
     "utcDate": "2026-06-23T03:00:00Z",
-    "status": "PAUSED",
+    "status": "FINISHED",
     "matchday": 2,
     "stage": "GROUP_STAGE",
     "group": "GROUP_J",
@@ -1483,11 +1483,11 @@
       "crest": "https://crests.football-data.org/algeria.svg"
     },
     "score": {
-      "winner": "HOME_TEAM",
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
         "home": 1,
-        "away": 0
+        "away": 2
       },
       "halfTime": {
         "home": 1,
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
