@@ -297,6 +297,25 @@
         {
           "position": 15,
           "team": {
+            "id": 770,
+            "name": "England",
+            "shortName": "England",
+            "tla": "ENG",
+            "crest": "https://crests.football-data.org/770.svg"
+          },
+          "playedGames": 2,
+          "form": "D,W",
+          "won": 1,
+          "draw": 1,
+          "lost": 0,
+          "points": 4,
+          "goalsFor": 4,
+          "goalsAgainst": 2,
+          "goalDifference": 2
+        },
+        {
+          "position": 16,
+          "team": {
             "id": 815,
             "name": "Morocco",
             "shortName": "Morocco",
@@ -314,26 +333,26 @@
           "goalDifference": 1
         },
         {
-          "position": 16,
+          "position": 17,
           "team": {
-            "id": 770,
-            "name": "England",
-            "shortName": "England",
-            "tla": "ENG",
-            "crest": "https://crests.football-data.org/770.svg"
+            "id": 763,
+            "name": "Ghana",
+            "shortName": "Ghana",
+            "tla": "GHA",
+            "crest": "https://crests.football-data.org/ghana.svg"
           },
-          "playedGames": 1,
-          "form": "W",
+          "playedGames": 2,
+          "form": "D,W",
           "won": 1,
-          "draw": 0,
+          "draw": 1,
           "lost": 0,
-          "points": 3,
-          "goalsFor": 4,
-          "goalsAgainst": 2,
-          "goalDifference": 2
+          "points": 4,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDifference": 1
         },
         {
-          "position": 17,
+          "position": 18,
           "team": {
             "id": 818,
             "name": "Colombia",
@@ -350,25 +369,6 @@
           "goalsFor": 3,
           "goalsAgainst": 1,
           "goalDifference": 2
-        },
-        {
-          "position": 18,
-          "team": {
-            "id": 763,
-            "name": "Ghana",
-            "shortName": "Ghana",
-            "tla": "GHA",
-            "crest": "https://crests.football-data.org/ghana.svg"
-          },
-          "playedGames": 1,
-          "form": "W",
-          "won": 1,
-          "draw": 0,
-          "lost": 0,
-          "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
         },
         {
           "position": 19,
@@ -1140,6 +1140,25 @@
         {
           "position": 11,
           "team": {
+            "id": 770,
+            "name": "England",
+            "shortName": "England",
+            "tla": "ENG",
+            "crest": "https://crests.football-data.org/770.svg"
+          },
+          "playedGames": 2,
+          "form": "",
+          "won": 1,
+          "draw": 1,
+          "lost": 0,
+          "points": 4,
+          "goalsFor": 4,
+          "goalsAgainst": 2,
+          "goalDifference": 2
+        },
+        {
+          "position": 12,
+          "team": {
             "id": 792,
             "name": "Sweden",
             "shortName": "Sweden",
@@ -1157,7 +1176,7 @@
           "goalDifference": 4
         },
         {
-          "position": 12,
+          "position": 13,
           "team": {
             "id": 788,
             "name": "Switzerland",
@@ -1174,25 +1193,6 @@
           "goalsFor": 4,
           "goalsAgainst": 1,
           "goalDifference": 3
-        },
-        {
-          "position": 13,
-          "team": {
-            "id": 770,
-            "name": "England",
-            "shortName": "England",
-            "tla": "ENG",
-            "crest": "https://crests.football-data.org/770.svg"
-          },
-          "playedGames": 1,
-          "form": "",
-          "won": 1,
-          "draw": 0,
-          "lost": 0,
-          "points": 3,
-          "goalsFor": 4,
-          "goalsAgainst": 2,
-          "goalDifference": 2
         },
         {
           "position": 14,
@@ -2135,6 +2135,25 @@
         {
           "position": 15,
           "team": {
+            "id": 763,
+            "name": "Ghana",
+            "shortName": "Ghana",
+            "tla": "GHA",
+            "crest": "https://crests.football-data.org/ghana.svg"
+          },
+          "playedGames": 1,
+          "form": "",
+          "won": 0,
+          "draw": 1,
+          "lost": 0,
+          "points": 1,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "position": 16,
+          "team": {
             "id": 774,
             "name": "South Africa",
             "shortName": "South Africa",
@@ -2152,7 +2171,7 @@
           "goalDifference": -2
         },
         {
-          "position": 16,
+          "position": 17,
           "team": {
             "id": 1060,
             "name": "Bosnia-Herzegovina",
@@ -2171,7 +2190,7 @@
           "goalDifference": -3
         },
         {
-          "position": 17,
+          "position": 18,
           "team": {
             "id": 9460,
             "name": "Curaçao",
@@ -2190,7 +2209,7 @@
           "goalDifference": -6
         },
         {
-          "position": 18,
+          "position": 19,
           "team": {
             "id": 769,
             "name": "Mexico",
@@ -2209,7 +2228,7 @@
           "goalDifference": 0
         },
         {
-          "position": 19,
+          "position": 20,
           "team": {
             "id": 828,
             "name": "Canada",
@@ -2228,7 +2247,7 @@
           "goalDifference": 0
         },
         {
-          "position": 20,
+          "position": 21,
           "team": {
             "id": 771,
             "name": "United States",
@@ -2247,7 +2266,7 @@
           "goalDifference": 0
         },
         {
-          "position": 21,
+          "position": 22,
           "team": {
             "id": 764,
             "name": "Brazil",
@@ -2266,7 +2285,7 @@
           "goalDifference": 0
         },
         {
-          "position": 22,
+          "position": 23,
           "team": {
             "id": 759,
             "name": "Germany",
@@ -2285,7 +2304,7 @@
           "goalDifference": 0
         },
         {
-          "position": 23,
+          "position": 24,
           "team": {
             "id": 8601,
             "name": "Netherlands",
@@ -2304,7 +2323,7 @@
           "goalDifference": 0
         },
         {
-          "position": 24,
+          "position": 25,
           "team": {
             "id": 760,
             "name": "Spain",
@@ -2323,7 +2342,7 @@
           "goalDifference": 0
         },
         {
-          "position": 25,
+          "position": 26,
           "team": {
             "id": 805,
             "name": "Belgium",
@@ -2342,7 +2361,7 @@
           "goalDifference": 0
         },
         {
-          "position": 26,
+          "position": 27,
           "team": {
             "id": 773,
             "name": "France",
@@ -2361,7 +2380,7 @@
           "goalDifference": 0
         },
         {
-          "position": 27,
+          "position": 28,
           "team": {
             "id": 762,
             "name": "Argentina",
@@ -2380,7 +2399,7 @@
           "goalDifference": 0
         },
         {
-          "position": 28,
+          "position": 29,
           "team": {
             "id": 765,
             "name": "Portugal",
@@ -2399,32 +2418,13 @@
           "goalDifference": 0
         },
         {
-          "position": 29,
+          "position": 30,
           "team": {
             "id": 770,
             "name": "England",
             "shortName": "England",
             "tla": "ENG",
             "crest": "https://crests.football-data.org/770.svg"
-          },
-          "playedGames": 0,
-          "form": "",
-          "won": 0,
-          "draw": 0,
-          "lost": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "position": 30,
-          "team": {
-            "id": 763,
-            "name": "Ghana",
-            "shortName": "Ghana",
-            "tla": "GHA",
-            "crest": "https://crests.football-data.org/ghana.svg"
           },
           "playedGames": 0,
           "form": "",
