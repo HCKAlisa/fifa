@@ -6880,6 +6880,13 @@
         "nationality": "Colombia"
       },
       {
+        "id": 3730,
+        "name": "Juan Fernando Quintero",
+        "position": "Midfield",
+        "dateOfBirth": "1993-01-18",
+        "nationality": "Colombia"
+      },
+      {
         "id": 3737,
         "name": "Jefferson Lerma",
         "position": "Midfield",
@@ -6905,13 +6912,6 @@
         "name": "Kevin Castaño",
         "position": "Midfield",
         "dateOfBirth": "2000-09-29",
-        "nationality": "Colombia"
-      },
-      {
-        "id": 168403,
-        "name": "Juan Quintero",
-        "position": "Midfield",
-        "dateOfBirth": "1993-01-18",
         "nationality": "Colombia"
       },
       {
