@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1702,7 +1702,7 @@
   {
     "id": 537344,
     "utcDate": "2026-06-24T22:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
@@ -1721,22 +1721,22 @@
       "crest": "https://crests.football-data.org/haiti.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 2
       }
     }
   },
   {
     "id": 537343,
     "utcDate": "2026-06-24T22:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_C",
@@ -1755,22 +1755,22 @@
       "crest": "https://crests.football-data.org/764.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 3
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       }
     }
   },
   {
     "id": 537331,
     "utcDate": "2026-06-25T01:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -1789,11 +1789,11 @@
       "crest": "https://crests.football-data.org/769.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -1804,7 +1804,7 @@
   {
     "id": 537332,
     "utcDate": "2026-06-25T01:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -1823,11 +1823,11 @@
       "crest": "https://crests.football-data.org/772.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUR",
+      "tla": "CUW",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
