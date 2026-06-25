@@ -289,7 +289,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -493,7 +493,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "score": {
@@ -1173,7 +1173,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "score": {
@@ -1302,7 +1302,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -1838,7 +1838,7 @@
   {
     "id": 537355,
     "utcDate": "2026-06-25T20:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1857,22 +1857,22 @@
       "crest": "https://crests.football-data.org/759.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 1,
+        "home": 2,
         "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": 537356,
     "utcDate": "2026-06-25T20:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1880,7 +1880,7 @@
       "id": 9460,
       "name": "Curaçao",
       "shortName": "Curaçao",
-      "tla": "CUW",
+      "tla": "CUR",
       "crest": "https://crests.football-data.org/curacao.svg"
     },
     "awayTeam": {
@@ -1895,11 +1895,11 @@
       "duration": "REGULAR",
       "fullTime": {
         "home": 0,
-        "away": 1
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
@@ -2118,7 +2118,7 @@
       "id": 758,
       "name": "Uruguay",
       "shortName": "Uruguay",
-      "tla": "URU",
+      "tla": "URY",
       "crest": "https://crests.football-data.org/758.svg"
     },
     "awayTeam": {
@@ -2523,11 +2523,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": 759,
-      "name": "Germany",
-      "shortName": "Germany",
-      "tla": "GER",
-      "crest": "https://crests.football-data.org/759.svg"
+      "id": null,
+      "name": null,
+      "shortName": null,
+      "tla": null,
+      "crest": null
     },
     "awayTeam": {
       "id": null,
@@ -2659,11 +2659,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": 769,
-      "name": "Mexico",
-      "shortName": "Mexico",
-      "tla": "MEX",
-      "crest": "https://crests.football-data.org/769.svg"
+      "id": null,
+      "name": null,
+      "shortName": null,
+      "tla": null,
+      "crest": null
     },
     "awayTeam": {
       "id": null,
@@ -2761,11 +2761,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": 771,
-      "name": "United States",
-      "shortName": "USA",
-      "tla": "USA",
-      "crest": "https://crests.football-data.org/usa.svg"
+      "id": null,
+      "name": null,
+      "shortName": null,
+      "tla": null,
+      "crest": null
     },
     "awayTeam": {
       "id": null,
@@ -2931,11 +2931,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": 762,
-      "name": "Argentina",
-      "shortName": "Argentina",
-      "tla": "ARG",
-      "crest": "https://crests.football-data.org/762.png"
+      "id": null,
+      "name": null,
+      "shortName": null,
+      "tla": null,
+      "crest": null
     },
     "awayTeam": {
       "id": null,
