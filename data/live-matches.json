@@ -1770,7 +1770,7 @@
   {
     "id": 537331,
     "utcDate": "2026-06-25T01:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -1789,22 +1789,22 @@
       "crest": "https://crests.football-data.org/769.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 3
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537332,
     "utcDate": "2026-06-25T01:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_A",
@@ -1823,22 +1823,22 @@
       "crest": "https://crests.football-data.org/772.png"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537355,
     "utcDate": "2026-06-25T20:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1857,22 +1857,22 @@
       "crest": "https://crests.football-data.org/759.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       }
     }
   },
   {
     "id": 537356,
     "utcDate": "2026-06-25T20:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_E",
@@ -1891,22 +1891,22 @@
       "crest": "https://crests.football-data.org/787.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": 537361,
     "utcDate": "2026-06-25T23:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -1925,22 +1925,22 @@
       "crest": "https://crests.football-data.org/8601.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 3
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 2
       }
     }
   },
   {
     "id": 537362,
     "utcDate": "2026-06-25T23:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_F",
@@ -1959,15 +1959,15 @@
       "crest": "https://crests.football-data.org/792.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
@@ -2042,7 +2042,7 @@
   {
     "id": 537395,
     "utcDate": "2026-06-26T19:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
@@ -2061,11 +2061,11 @@
       "crest": "https://crests.football-data.org/773.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
         "home": null,
@@ -2076,7 +2076,7 @@
   {
     "id": 537396,
     "utcDate": "2026-06-26T19:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_I",
@@ -2095,11 +2095,11 @@
       "crest": "https://crests.football-data.org/iraq.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -2455,18 +2455,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 774,
+      "name": "South Africa",
+      "shortName": "South Africa",
+      "tla": "RSA",
+      "crest": "https://crests.football-data.org/9396.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 828,
+      "name": "Canada",
+      "shortName": "Canada",
+      "tla": "CAN",
+      "crest": "https://crests.football-data.org/canada.svg"
     },
     "score": {
       "winner": null,
@@ -2489,18 +2489,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 764,
+      "name": "Brazil",
+      "shortName": "Brazil",
+      "tla": "BRA",
+      "crest": "https://crests.football-data.org/764.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 766,
+      "name": "Japan",
+      "shortName": "Japan",
+      "tla": "JPN",
+      "crest": "https://crests.football-data.org/766.svg"
     },
     "score": {
       "winner": null,
@@ -2557,18 +2557,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 8601,
+      "name": "Netherlands",
+      "shortName": "Netherlands",
+      "tla": "NED",
+      "crest": "https://crests.football-data.org/8601.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 815,
+      "name": "Morocco",
+      "shortName": "Morocco",
+      "tla": "MAR",
+      "crest": "https://crests.football-data.org/morocco.svg"
     },
     "score": {
       "winner": null,
@@ -2768,11 +2768,11 @@
       "crest": "https://crests.football-data.org/usa.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 1060,
+      "name": "Bosnia-Herzegovina",
+      "shortName": "Bosnia-H.",
+      "tla": "BIH",
+      "crest": "https://crests.football-data.org/bosnia.svg"
     },
     "score": {
       "winner": null,
@@ -2863,11 +2863,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 788,
+      "name": "Switzerland",
+      "shortName": "Switzerland",
+      "tla": "SUI",
+      "crest": "https://crests.football-data.org/788.svg"
     },
     "awayTeam": {
       "id": null,
@@ -2897,11 +2897,11 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 779,
+      "name": "Australia",
+      "shortName": "Australia",
+      "tla": "AUS",
+      "crest": "https://crests.football-data.org/779.svg"
     },
     "awayTeam": {
       "id": null,
