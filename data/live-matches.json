@@ -2110,7 +2110,7 @@
   {
     "id": 537373,
     "utcDate": "2026-06-27T00:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -2129,11 +2129,11 @@
       "crest": "https://crests.football-data.org/760.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -2144,7 +2144,7 @@
   {
     "id": 537374,
     "utcDate": "2026-06-27T00:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -2163,11 +2163,11 @@
       "crest": "https://crests.football-data.org/saudi_arabia.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
