@@ -2110,7 +2110,7 @@
   {
     "id": 537373,
     "utcDate": "2026-06-27T00:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -2129,22 +2129,22 @@
       "crest": "https://crests.football-data.org/760.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
         "home": 0,
-        "away": 0
+        "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": 537374,
     "utcDate": "2026-06-27T00:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_H",
@@ -2170,15 +2170,15 @@
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537367,
     "utcDate": "2026-06-27T03:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -2197,11 +2197,11 @@
       "crest": "https://crests.football-data.org/805.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
         "home": null,
@@ -2212,7 +2212,7 @@
   {
     "id": 537368,
     "utcDate": "2026-06-27T03:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_G",
@@ -2231,11 +2231,11 @@
       "crest": "https://crests.football-data.org/iran.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "halfTime": {
         "home": null,
