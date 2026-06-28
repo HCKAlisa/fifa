@@ -2314,7 +2314,7 @@
   {
     "id": 537407,
     "utcDate": "2026-06-27T23:30:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
@@ -2340,15 +2340,15 @@
         "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       }
     }
   },
   {
     "id": 537408,
     "utcDate": "2026-06-27T23:30:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_K",
@@ -2367,22 +2367,22 @@
       "crest": "https://crests.football-data.org/8070.png"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 1,
+        "home": 3,
         "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": 537401,
     "utcDate": "2026-06-28T02:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_J",
@@ -2401,11 +2401,11 @@
       "crest": "https://crests.football-data.org/762.png"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -2416,7 +2416,7 @@
   {
     "id": 537402,
     "utcDate": "2026-06-28T02:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": 3,
     "stage": "GROUP_STAGE",
     "group": "GROUP_J",
@@ -2435,11 +2435,11 @@
       "crest": "https://crests.football-data.org/816.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
