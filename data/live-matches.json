@@ -2450,7 +2450,7 @@
   {
     "id": 537417,
     "utcDate": "2026-06-28T19:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2469,11 +2469,11 @@
       "crest": "https://crests.football-data.org/canada.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -2530,11 +2530,11 @@
       "crest": "https://crests.football-data.org/759.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 761,
+      "name": "Paraguay",
+      "shortName": "Paraguay",
+      "tla": "PAR",
+      "crest": "https://crests.football-data.org/761.svg"
     },
     "score": {
       "winner": null,
@@ -2598,11 +2598,11 @@
       "crest": "https://crests.football-data.org/787.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 8872,
+      "name": "Norway",
+      "shortName": "Norway",
+      "tla": "NOR",
+      "crest": "https://crests.football-data.org/813.svg"
     },
     "score": {
       "winner": null,
@@ -2625,18 +2625,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 773,
+      "name": "France",
+      "shortName": "France",
+      "tla": "FRA",
+      "crest": "https://crests.football-data.org/773.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 792,
+      "name": "Sweden",
+      "shortName": "Sweden",
+      "tla": "SWE",
+      "crest": "https://crests.football-data.org/792.svg"
     },
     "score": {
       "winner": null,
@@ -2666,11 +2666,11 @@
       "crest": "https://crests.football-data.org/769.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 791,
+      "name": "Ecuador",
+      "shortName": "Ecuador",
+      "tla": "ECU",
+      "crest": "https://crests.football-data.org/791.svg"
     },
     "score": {
       "winner": null,
@@ -2693,18 +2693,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 770,
+      "name": "England",
+      "shortName": "England",
+      "tla": "ENG",
+      "crest": "https://crests.football-data.org/770.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 1934,
+      "name": "Congo DR",
+      "shortName": "Congo DR",
+      "tla": "COD",
+      "crest": "https://crests.football-data.org/congo_dr.svg"
     },
     "score": {
       "winner": null,
@@ -2727,18 +2727,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 805,
+      "name": "Belgium",
+      "shortName": "Belgium",
+      "tla": "BEL",
+      "crest": "https://crests.football-data.org/805.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 804,
+      "name": "Senegal",
+      "shortName": "Senegal",
+      "tla": "SEN",
+      "crest": "https://crests.football-data.org/senegal.svg"
     },
     "score": {
       "winner": null,
@@ -2795,18 +2795,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 760,
+      "name": "Spain",
+      "shortName": "Spain",
+      "tla": "ESP",
+      "crest": "https://crests.football-data.org/760.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 816,
+      "name": "Austria",
+      "shortName": "Austria",
+      "tla": "AUT",
+      "crest": "https://crests.football-data.org/816.svg"
     },
     "score": {
       "winner": null,
@@ -2829,18 +2829,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 765,
+      "name": "Portugal",
+      "shortName": "Portugal",
+      "tla": "POR",
+      "crest": "https://crests.football-data.org/765.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 799,
+      "name": "Croatia",
+      "shortName": "Croatia",
+      "tla": "CRO",
+      "crest": "https://crests.football-data.org/799.svg"
     },
     "score": {
       "winner": null,
@@ -2870,11 +2870,11 @@
       "crest": "https://crests.football-data.org/788.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 778,
+      "name": "Algeria",
+      "shortName": "Algeria",
+      "tla": "ALG",
+      "crest": "https://crests.football-data.org/algeria.svg"
     },
     "score": {
       "winner": null,
@@ -2904,11 +2904,11 @@
       "crest": "https://crests.football-data.org/779.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 825,
+      "name": "Egypt",
+      "shortName": "Egypt",
+      "tla": "EGY",
+      "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
       "winner": null,
@@ -2938,11 +2938,11 @@
       "crest": "https://crests.football-data.org/762.png"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 1930,
+      "name": "Cape Verde Islands",
+      "shortName": "Cape Verde",
+      "tla": "CPV",
+      "crest": "https://crests.football-data.org/cape_verde.svg"
     },
     "score": {
       "winner": null,
@@ -2965,18 +2965,18 @@
     "stage": "LAST_32",
     "group": "LAST_32",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 818,
+      "name": "Colombia",
+      "shortName": "Colombia",
+      "tla": "COL",
+      "crest": "https://crests.football-data.org/818.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 763,
+      "name": "Ghana",
+      "shortName": "Ghana",
+      "tla": "GHA",
+      "crest": "https://crests.football-data.org/ghana.svg"
     },
     "score": {
       "winner": null,
