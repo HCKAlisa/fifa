@@ -2484,7 +2484,7 @@
   {
     "id": 537423,
     "utcDate": "2026-06-29T17:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2503,11 +2503,11 @@
       "crest": "https://crests.football-data.org/766.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
         "home": null,
@@ -2999,11 +2999,11 @@
     "stage": "LAST_16",
     "group": "LAST_16",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 828,
+      "name": "Canada",
+      "shortName": "Canada",
+      "tla": "CAN",
+      "crest": "https://crests.football-data.org/canada.svg"
     },
     "awayTeam": {
       "id": null,

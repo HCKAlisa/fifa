@@ -1923,13 +1923,6 @@
         "nationality": "Japan"
       },
       {
-        "id": 3269,
-        "name": "Wataru Endō",
-        "position": "Midfield",
-        "dateOfBirth": "1993-02-09",
-        "nationality": "Japan"
-      },
-      {
         "id": 6716,
         "name": "Daichi Kamada",
         "position": "Midfield",
@@ -1990,6 +1983,13 @@
         "name": "Koki Ogawa",
         "position": "Offence",
         "dateOfBirth": "1997-08-08",
+        "nationality": "Japan"
+      },
+      {
+        "id": 48988,
+        "name": "Shuto Machino",
+        "position": "Offence",
+        "dateOfBirth": "1999-09-30",
         "nationality": "Japan"
       },
       {
