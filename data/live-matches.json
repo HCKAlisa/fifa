@@ -2518,7 +2518,7 @@
   {
     "id": 537415,
     "utcDate": "2026-06-29T20:30:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2537,15 +2537,27 @@
       "crest": "https://crests.football-data.org/761.svg"
     },
     "score": {
-      "winner": "DRAW",
-      "duration": "REGULAR",
+      "winner": null,
+      "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
+        "home": 5,
+        "away": 6
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 1
+      },
+      "regularTime": {
+        "home": 1,
+        "away": 1
+      },
+      "extraTime": {
         "home": 0,
         "away": 0
       },
-      "halfTime": {
-        "home": null,
-        "away": null
+      "penalties": {
+        "home": 5,
+        "away": 5
       }
     }
   },
