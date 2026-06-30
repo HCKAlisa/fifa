@@ -2540,8 +2540,8 @@
       "winner": null,
       "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
-        "home": 5,
-        "away": 6
+        "home": 4,
+        "away": 5
       },
       "halfTime": {
         "home": 0,
@@ -2556,15 +2556,15 @@
         "away": 0
       },
       "penalties": {
-        "home": 5,
-        "away": 5
+        "home": 4,
+        "away": 4
       }
     }
   },
   {
     "id": 537418,
     "utcDate": "2026-06-30T01:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2583,11 +2583,11 @@
       "crest": "https://crests.football-data.org/morocco.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
