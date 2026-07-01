@@ -2712,7 +2712,7 @@
   {
     "id": 537426,
     "utcDate": "2026-07-01T16:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2731,15 +2731,15 @@
       "crest": "https://crests.football-data.org/congo_dr.svg"
     },
     "score": {
-      "winner": "AWAY_TEAM",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
+        "home": 2,
         "away": 1
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
