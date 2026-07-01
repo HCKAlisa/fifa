@@ -2712,7 +2712,7 @@
   {
     "id": 537426,
     "utcDate": "2026-07-01T16:00:00Z",
-    "status": "TIMED",
+    "status": "LIVE",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2731,11 +2731,11 @@
       "crest": "https://crests.football-data.org/congo_dr.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       },
       "halfTime": {
         "home": null,
@@ -3064,11 +3064,11 @@
       "crest": "https://crests.football-data.org/761.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 773,
+      "name": "France",
+      "shortName": "France",
+      "tla": "FRA",
+      "crest": "https://crests.football-data.org/773.svg"
     },
     "score": {
       "winner": null,
@@ -3098,11 +3098,11 @@
       "crest": "https://crests.football-data.org/764.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 8872,
+      "name": "Norway",
+      "shortName": "Norway",
+      "tla": "NOR",
+      "crest": "https://crests.football-data.org/813.svg"
     },
     "score": {
       "winner": null,
