@@ -2822,7 +2822,7 @@
   {
     "id": 537420,
     "utcDate": "2026-07-02T19:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2844,7 +2844,7 @@
       "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 1,
+        "home": 3,
         "away": 0
       },
       "halfTime": {
