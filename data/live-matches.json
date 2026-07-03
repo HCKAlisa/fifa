@@ -2890,7 +2890,7 @@
   {
     "id": 537429,
     "utcDate": "2026-07-03T03:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2909,15 +2909,15 @@
       "crest": "https://crests.football-data.org/algeria.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 2,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     }
   },
