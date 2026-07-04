@@ -2970,7 +2970,7 @@
   {
     "id": 537427,
     "utcDate": "2026-07-03T22:00:00Z",
-    "status": "IN_PLAY",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -2989,15 +2989,23 @@
       "crest": "https://crests.football-data.org/cape_verde.svg"
     },
     "score": {
-      "winner": "DRAW",
-      "duration": "REGULAR",
+      "winner": "HOME_TEAM",
+      "duration": "EXTRA_TIME",
       "fullTime": {
-        "home": 0,
-        "away": 0
+        "home": 3,
+        "away": 2
       },
       "halfTime": {
+        "home": 1,
+        "away": 0
+      },
+      "regularTime": {
         "home": null,
         "away": null
+      },
+      "extraTime": {
+        "home": 2,
+        "away": 1
       }
     }
   },
