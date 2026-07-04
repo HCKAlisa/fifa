@@ -3012,7 +3012,7 @@
   {
     "id": 537430,
     "utcDate": "2026-07-04T01:30:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_32",
     "group": "LAST_32",
@@ -3031,15 +3031,15 @@
       "crest": "https://crests.football-data.org/ghana.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       }
     }
   },
