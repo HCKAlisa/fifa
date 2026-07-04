@@ -2943,7 +2943,7 @@
       "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
         "home": 3,
@@ -2962,7 +2962,7 @@
         "away": 0
       },
       "penalties": {
-        "home": 4,
+        "home": 2,
         "away": 4
       }
     }
@@ -3000,8 +3000,8 @@
         "away": 0
       },
       "regularTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 1
       },
       "extraTime": {
         "home": 2,
@@ -3046,7 +3046,7 @@
   {
     "id": 537376,
     "utcDate": "2026-07-04T17:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "LAST_16",
     "group": "LAST_16",
@@ -3065,11 +3065,11 @@
       "crest": "https://crests.football-data.org/morocco.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -3187,18 +3187,18 @@
     "stage": "LAST_16",
     "group": "LAST_16",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 765,
+      "name": "Portugal",
+      "shortName": "Portugal",
+      "tla": "POR",
+      "crest": "https://crests.football-data.org/765.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 760,
+      "name": "Spain",
+      "shortName": "Spain",
+      "tla": "ESP",
+      "crest": "https://crests.football-data.org/760.svg"
     },
     "score": {
       "winner": null,
@@ -3255,18 +3255,18 @@
     "stage": "LAST_16",
     "group": "LAST_16",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 762,
+      "name": "Argentina",
+      "shortName": "Argentina",
+      "tla": "ARG",
+      "crest": "https://crests.football-data.org/762.png"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 825,
+      "name": "Egypt",
+      "shortName": "Egypt",
+      "tla": "EGY",
+      "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
       "winner": null,
@@ -3289,18 +3289,18 @@
     "stage": "LAST_16",
     "group": "LAST_16",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 788,
+      "name": "Switzerland",
+      "shortName": "Switzerland",
+      "tla": "SUI",
+      "crest": "https://crests.football-data.org/788.svg"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 818,
+      "name": "Colombia",
+      "shortName": "Colombia",
+      "tla": "COL",
+      "crest": "https://crests.football-data.org/818.svg"
     },
     "score": {
       "winner": null,
