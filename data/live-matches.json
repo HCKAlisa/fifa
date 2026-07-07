@@ -3216,7 +3216,7 @@
   {
     "id": 537380,
     "utcDate": "2026-07-07T00:00:00Z",
-    "status": "TIMED",
+    "status": "PAUSED",
     "matchday": null,
     "stage": "LAST_16",
     "group": "LAST_16",
@@ -3235,15 +3235,15 @@
       "crest": "https://crests.football-data.org/805.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 2
       }
     }
   },
