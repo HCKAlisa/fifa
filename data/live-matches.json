@@ -3250,7 +3250,7 @@
   {
     "id": 537381,
     "utcDate": "2026-07-07T16:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": "LAST_16",
@@ -3269,22 +3269,22 @@
       "crest": "https://crests.football-data.org/825.svg"
     },
     "score": {
-      "winner": "DRAW",
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": 0,
-        "away": 0
+        "home": 3,
+        "away": 2
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 1
       }
     }
   },
   {
     "id": 537382,
     "utcDate": "2026-07-07T20:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "LAST_16",
     "group": "LAST_16",
@@ -3303,11 +3303,11 @@
       "crest": "https://crests.football-data.org/818.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
