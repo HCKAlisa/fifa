@@ -3216,7 +3216,7 @@
   {
     "id": 537380,
     "utcDate": "2026-07-07T00:00:00Z",
-    "status": "PAUSED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "LAST_16",
     "group": "LAST_16",
@@ -3239,7 +3239,7 @@
       "duration": "REGULAR",
       "fullTime": {
         "home": 1,
-        "away": 2
+        "away": 4
       },
       "halfTime": {
         "home": 1,
