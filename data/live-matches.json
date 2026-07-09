@@ -3303,7 +3303,7 @@
       "crest": "https://crests.football-data.org/818.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "PENALTY_SHOOTOUT",
       "fullTime": {
         "home": 4,
@@ -3322,7 +3322,7 @@
         "away": 0
       },
       "penalties": {
-        "home": 3,
+        "home": 4,
         "away": 3
       }
     }
@@ -3330,7 +3330,7 @@
   {
     "id": 537383,
     "utcDate": "2026-07-09T20:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "QUARTER_FINALS",
     "group": "QUARTER_FINALS",
@@ -3349,11 +3349,11 @@
       "crest": "https://crests.football-data.org/morocco.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "DRAW",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -3437,18 +3437,18 @@
     "stage": "QUARTER_FINALS",
     "group": "QUARTER_FINALS",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 762,
+      "name": "Argentina",
+      "shortName": "Argentina",
+      "tla": "ARG",
+      "crest": "https://crests.football-data.org/762.png"
     },
     "awayTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 788,
+      "name": "Switzerland",
+      "shortName": "Switzerland",
+      "tla": "SUI",
+      "crest": "https://crests.football-data.org/788.svg"
     },
     "score": {
       "winner": null,
