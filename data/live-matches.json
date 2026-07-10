@@ -3364,7 +3364,7 @@
   {
     "id": 537384,
     "utcDate": "2026-07-10T19:00:00Z",
-    "status": "TIMED",
+    "status": "IN_PLAY",
     "matchday": null,
     "stage": "QUARTER_FINALS",
     "group": "QUARTER_FINALS",
@@ -3383,11 +3383,11 @@
       "crest": "https://crests.football-data.org/805.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "HOME_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 1,
+        "away": 0
       },
       "halfTime": {
         "home": null,
@@ -3471,11 +3471,11 @@
     "stage": "SEMI_FINALS",
     "group": "SEMI_FINALS",
     "homeTeam": {
-      "id": null,
-      "name": null,
-      "shortName": null,
-      "tla": null,
-      "crest": null
+      "id": 773,
+      "name": "France",
+      "shortName": "France",
+      "tla": "FRA",
+      "crest": "https://crests.football-data.org/773.svg"
     },
     "awayTeam": {
       "id": null,
