@@ -5860,24 +5860,10 @@
         "nationality": "Turkey"
       },
       {
-        "id": 171972,
-        "name": "Oguz Aydin",
-        "position": "Midfield",
-        "dateOfBirth": "2000-10-27",
-        "nationality": "Turkey"
-      },
-      {
         "id": 172081,
         "name": "Baris Yilmaz",
         "position": "Midfield",
         "dateOfBirth": "2000-05-23",
-        "nationality": "Turkey"
-      },
-      {
-        "id": 180964,
-        "name": "İrfan Kahveci",
-        "position": "Midfield",
-        "dateOfBirth": "1995-07-15",
         "nationality": "Turkey"
       },
       {
@@ -5892,6 +5878,20 @@
         "name": "Muhammed Kerem Aktürkoğlu",
         "position": "Offence",
         "dateOfBirth": "1998-10-21",
+        "nationality": "Turkey"
+      },
+      {
+        "id": 171972,
+        "name": "Oguz Aydin",
+        "position": "Offence",
+        "dateOfBirth": "2000-10-27",
+        "nationality": "Turkey"
+      },
+      {
+        "id": 180964,
+        "name": "İrfan Kahveci",
+        "position": "Offence",
+        "dateOfBirth": "1995-07-15",
         "nationality": "Turkey"
       },
       {
@@ -6303,13 +6303,6 @@
         "nationality": "Belgium"
       },
       {
-        "id": 8128,
-        "name": "Dodi Lukebakio",
-        "position": "Midfield",
-        "dateOfBirth": "1997-09-24",
-        "nationality": "Belgium"
-      },
-      {
         "id": 8858,
         "name": "Alexis Saelemaekers",
         "position": "Midfield",
@@ -6356,6 +6349,13 @@
         "name": "Romelu Lukaku",
         "position": "Offence",
         "dateOfBirth": "1993-05-13",
+        "nationality": "Belgium"
+      },
+      {
+        "id": 8128,
+        "name": "Dodi Lukebakio",
+        "position": "Offence",
+        "dateOfBirth": "1997-09-24",
         "nationality": "Belgium"
       },
       {
