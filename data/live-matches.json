@@ -3584,7 +3584,7 @@
   {
     "id": 537390,
     "utcDate": "2026-07-19T19:00:00Z",
-    "status": "LIVE",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "FINAL",
     "group": "FINAL",
@@ -3603,15 +3603,23 @@
       "crest": "https://crests.football-data.org/762.png"
     },
     "score": {
-      "winner": "DRAW",
-      "duration": "REGULAR",
+      "winner": "HOME_TEAM",
+      "duration": "EXTRA_TIME",
       "fullTime": {
-        "home": 0,
+        "home": 1,
         "away": 0
       },
       "halfTime": {
+        "home": 0,
+        "away": 0
+      },
+      "regularTime": {
         "home": null,
         "away": null
+      },
+      "extraTime": {
+        "home": 1,
+        "away": 0
       }
     }
   }
