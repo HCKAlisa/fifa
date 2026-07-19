@@ -3550,7 +3550,7 @@
   {
     "id": 537389,
     "utcDate": "2026-07-18T21:00:00Z",
-    "status": "TIMED",
+    "status": "FINISHED",
     "matchday": null,
     "stage": "THIRD_PLACE",
     "group": "THIRD_PLACE",
@@ -3569,15 +3569,15 @@
       "crest": "https://crests.football-data.org/770.svg"
     },
     "score": {
-      "winner": null,
+      "winner": "AWAY_TEAM",
       "duration": "REGULAR",
       "fullTime": {
-        "home": null,
-        "away": null
+        "home": 4,
+        "away": 6
       },
       "halfTime": {
-        "home": null,
-        "away": null
+        "home": 0,
+        "away": 4
       }
     }
   },
